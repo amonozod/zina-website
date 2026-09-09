@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Speaking — Zina</title>
-<meta name="description" content="Practice IELTS Speaking with an AI examiner across all 3 parts, with feedback on fluency and pronunciation.">
+<meta name="description" content="Practice IELTS Speaking Part 1, 2, and 3 with a real timer and get instant AI feedback scored against all 4 official criteria.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
       <a href="reading.html">Reading</a>
       <a href="writing.html">Writing</a>
       <a href="speaking.html" class="active">Speaking</a>
-      <a href="ai-practice.html">AI Checker</a>
       <a href="mock-tests.html">Mock tests</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
@@ -37,15 +36,119 @@
     <div class="breadcrumb"><a href="index.html">Zina</a> / Speaking</div>
     <div class="kicker">04 · Skill</div>
     <h1 class="h-lg">Speaking — don't let exam day be the first time you speak out loud.</h1>
-    <p class="lede">Before facing a live examiner, spend days practicing with an AI examiner so speaking feels natural, not new.</p>
+    <p class="lede">Practice all 3 parts below with an AI examiner and get instant, criteria-based feedback on your spoken (or typed) answers.</p>
     <div class="btn-row">
-      <a href="ai-practice.html" class="btn btn-gold">Start a conversation — $2</a>
-      <a href="#parts" class="btn btn-outline">See the format</a>
+      <a href="#practice" class="btn btn-gold">Start practicing below</a>
+      <a href="#format" class="btn btn-outline">See the format</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="parts">
+<section class="section" id="practice">
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="part1">Part 1</button>
+      <button class="tab-btn" data-tab="part2">Part 2</button>
+      <button class="tab-btn" data-tab="part3">Part 3</button>
+    </div>
+
+    <!-- ============ PART 1 ============ -->
+    <div class="panel active" id="panel-part1">
+      <div class="exam-topbar">
+        <div>
+          <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Part 1 · 1 minute</div>
+          <div class="timer" id="p1Timer">01:00</div>
+        </div>
+        <div>
+          <button class="btn btn-outline btn-sm" id="p1NewTopic">New question</button>
+          <button class="btn btn-primary btn-sm" id="p1Start">Start</button>
+        </div>
+      </div>
+      <div class="cue-card">
+        <div class="phase-label" id="p1Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Warm-up</div>
+        <h3 id="p1Question">Press "Start" to get a real Part 1 question and begin the timer.</h3>
+      </div>
+      <div class="locked-banner" id="p1Locked">Time's up! Your answer has been locked and submitted automatically for scoring.</div>
+      <div class="mic-row">
+        <button class="mic-btn" id="p1Mic" disabled>●</button>
+        <span style="font-size:0.88rem; color:var(--muted);" id="p1MicHint">Mic needs Chrome/Edge — you can also type instead.</span>
+      </div>
+      <textarea class="exam-input" id="p1Input" placeholder="Your live transcript or typed answer will appear here once you start..." disabled></textarea>
+      <div class="exam-actions">
+        <button class="btn btn-gold" id="p1Submit" disabled>Submit for AI feedback</button>
+        <button class="btn btn-outline" id="p1Reset">Reset</button>
+      </div>
+      <div id="p1Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your answer against IELTS Speaking criteria…</div>
+      <div id="p1Error"></div>
+      <div id="p1Result"></div>
+    </div>
+
+    <!-- ============ PART 2 ============ -->
+    <div class="panel" id="panel-part2">
+      <div class="exam-topbar">
+        <div>
+          <div class="phase-label" id="p2PhaseLabel" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Part 2 · 1 min prep + 2 min speaking</div>
+          <div class="timer" id="p2Timer">01:00</div>
+        </div>
+        <div>
+          <button class="btn btn-outline btn-sm" id="p2NewTopic">New topic</button>
+          <button class="btn btn-primary btn-sm" id="p2Start">Start exam</button>
+        </div>
+      </div>
+      <div class="cue-card">
+        <div class="phase-label" id="p2Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Category</div>
+        <h3 id="p2Title">Press "Start exam" to get a real cue card and begin the 1-minute prep timer.</h3>
+        <ul id="p2Bullets"></ul>
+      </div>
+      <div class="locked-banner" id="p2Locked">Time's up! Your answer has been locked and submitted automatically for scoring.</div>
+      <div class="mic-row">
+        <button class="mic-btn" id="p2Mic" disabled>●</button>
+        <span style="font-size:0.88rem; color:var(--muted);" id="p2MicHint">Mic needs Chrome/Edge — you can also type instead.</span>
+      </div>
+      <textarea class="exam-input" id="p2Input" placeholder="Your live transcript or typed answer will appear here once speaking phase starts..." disabled></textarea>
+      <div class="exam-actions">
+        <button class="btn btn-gold" id="p2Submit" disabled>Submit for AI feedback</button>
+        <button class="btn btn-outline" id="p2Reset">Reset</button>
+      </div>
+      <div id="p2Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your answer against IELTS Speaking criteria…</div>
+      <div id="p2Error"></div>
+      <div id="p2Result"></div>
+    </div>
+
+    <!-- ============ PART 3 ============ -->
+    <div class="panel" id="panel-part3">
+      <div class="exam-topbar">
+        <div>
+          <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Part 3 · 2 minutes</div>
+          <div class="timer" id="p3Timer">02:00</div>
+        </div>
+        <div>
+          <button class="btn btn-outline btn-sm" id="p3NewTopic">New question</button>
+          <button class="btn btn-primary btn-sm" id="p3Start">Start</button>
+        </div>
+      </div>
+      <div class="cue-card">
+        <div class="phase-label" id="p3Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Discussion</div>
+        <h3 id="p3Question">Press "Start" to get a real Part 3 discussion question and begin the timer.</h3>
+      </div>
+      <div class="locked-banner" id="p3Locked">Time's up! Your answer has been locked and submitted automatically for scoring.</div>
+      <div class="mic-row">
+        <button class="mic-btn" id="p3Mic" disabled>●</button>
+        <span style="font-size:0.88rem; color:var(--muted);" id="p3MicHint">Mic needs Chrome/Edge — you can also type instead.</span>
+      </div>
+      <textarea class="exam-input" id="p3Input" placeholder="Your live transcript or typed answer will appear here once you start..." disabled></textarea>
+      <div class="exam-actions">
+        <button class="btn btn-gold" id="p3Submit" disabled>Submit for AI feedback</button>
+        <button class="btn btn-outline" id="p3Reset">Reset</button>
+      </div>
+      <div id="p3Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your answer against IELTS Speaking criteria…</div>
+      <div id="p3Error"></div>
+      <div id="p3Result"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="format">
   <div class="wrap">
     <div class="section-head"><div><h2 class="h-lg">A 3-part interview</h2></div></div>
     <div class="info-grid">
@@ -53,32 +156,6 @@
       <div class="info-cell"><div class="num">PART 2</div><div class="val">3–4</div><div class="lbl2">minutes — a 2-minute monologue based on a cue card</div></div>
       <div class="info-cell"><div class="num">PART 3</div><div class="val">4–5</div><div class="lbl2">minutes of deeper discussion on the topic</div></div>
       <div class="info-cell"><div class="num">TOTAL</div><div class="val">11–14</div><div class="lbl2">minutes — the shortest but most intense part of the exam</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="wrap grid-2">
-    <div>
-      <div class="kicker">How it works</div>
-      <h2 class="h-lg">Every answer comes back with a transcript and analysis</h2>
-      <p class="lede" style="margin-top:16px;">The AI examiner asks a question, you speak into the mic, and your answer is transcribed and scored on Fluency, Lexical Resource, Grammar, and Pronunciation.</p>
-      <div class="btn-row"><a href="ai-practice.html" class="btn btn-primary">Try a sample</a></div>
-    </div>
-    <div class="mockup">
-      <div class="mockup-bar"><span></span><span></span><span></span></div>
-      <div class="mockup-body">
-        <p class="essay-line" style="font-family:var(--mono); font-size:0.85rem; color:var(--muted);">PART 3 · "Do you think technology has changed education?"</p>
-        <p class="essay-line">"Um, yes, I think, <span class="mark tr">technology is very good thing</span> for, um, education because <span class="mark gr">students can access</span> so many resource online."</p>
-        <div class="annot"><b>Fluency:</b> frequent "um" fillers and hesitations — this lowers your fluency score.</div>
-        <div class="annot"><b>Lexical Resource:</b> "very good thing" is vague — try a more precise word like "highly beneficial" or "transformative."</div>
-        <div class="criteria-bars">
-          <div class="criteria-bar"><span>Fluency &amp; Coherence</span><div class="criteria-track"><div class="criteria-fill" style="width:60%;"></div></div><span>6.0</span></div>
-          <div class="criteria-bar"><span>Lexical Resource</span><div class="criteria-track"><div class="criteria-fill" style="width:65%;"></div></div><span>6.0</span></div>
-          <div class="criteria-bar"><span>Grammatical Range</span><div class="criteria-track"><div class="criteria-fill" style="width:70%;"></div></div><span>6.5</span></div>
-          <div class="criteria-bar"><span>Pronunciation</span><div class="criteria-track"><div class="criteria-fill" style="width:75%;"></div></div><span>6.5</span></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -98,9 +175,9 @@
   <div class="wrap cta-band">
     <div>
       <h2 class="h-lg">Speak for 5 minutes today</h2>
-      <p class="lede">Small, consistent practice sessions significantly reduce exam-day tension.</p>
+      <p class="lede">Small, consistent practice sessions significantly reduce exam-day tension — scroll up and try it above.</p>
     </div>
-    <a href="ai-practice.html" class="btn btn-gold">Start free</a>
+    <a href="#practice" class="btn btn-gold">Practice now</a>
   </div>
 </section>
 
@@ -138,5 +215,191 @@
 </footer>
 
 <script src="assets/script.js"></script>
+<script src="assets/exam-common.js"></script>
+<script>
+const PART1_TOPICS = [
+  { cat: "Home & Family", q: "Let's talk about your hometown. What do you like most about the place where you live?" },
+  { cat: "Work / Study", q: "Do you work or are you a student? What do you find most interesting about it?" },
+  { cat: "Hobbies", q: "What do you usually do in your free time, and why do you enjoy it?" },
+  { cat: "Daily Life", q: "How do you usually travel to work or school, and would you like to change that?" },
+];
+
+const PART2_TOPICS = [
+  { cat: "Place", title: "Describe a place in your hometown that has changed over the years.", bullets: ["Where it is", "What it used to be like", "What it is like now", "And explain how you feel about this change"] },
+  { cat: "Person", title: "Describe a person who has influenced your studies or career choices.", bullets: ["Who this person is", "How you know them", "What advice or influence they gave you", "And explain why this influence was important to you"] },
+  { cat: "Object", title: "Describe a piece of technology you find useful in daily life.", bullets: ["What it is", "How often you use it", "What you use it for", "And explain why it is useful to you"] },
+  { cat: "Event", title: "Describe a journey that did not go as planned.", bullets: ["Where you were going", "What happened during the journey", "How you dealt with the situation", "And explain how you felt about it afterwards"] },
+  { cat: "Activity", title: "Describe a skill you would like to learn in the future.", bullets: ["What the skill is", "How you would learn it", "How much time it would take", "And explain why you want to learn it"] },
+];
+
+const PART3_TOPICS = [
+  { cat: "Technology & Society", q: "How do you think technology will change the way people work in the future?" },
+  { cat: "Education", q: "Do you think the skills people need for work are different from what schools teach?" },
+  { cat: "Environment", q: "What can individuals do, realistically, to help protect the environment?" },
+  { cat: "Culture", q: "How has globalisation affected traditional cultures in your country?" },
+];
+
+function setupSpeakingPart(config) {
+  let current = null;
+  let seconds = config.seconds;
+  let interval = null;
+  let recognizing = false;
+
+  const timerEl = document.getElementById(config.timerId);
+  const input = document.getElementById(config.inputId);
+  const submit = document.getElementById(config.submitId);
+  const start = document.getElementById(config.startId);
+  const locked = document.getElementById(config.lockedId);
+  const categoryEl = document.getElementById(config.categoryId);
+  const questionEl = document.getElementById(config.questionId);
+  const bulletsEl = config.bulletsId ? document.getElementById(config.bulletsId) : null;
+  const mic = document.getElementById(config.micId);
+  const micHint = document.getElementById(config.micHintId);
+
+  const recognition = setupSpeechRecognition((text) => { input.value = text; });
+  if (recognition) {
+    micHint.textContent = "Tap the mic to speak — your words will be transcribed live.";
+  } else {
+    mic.style.display = "none";
+    micHint.textContent = "Voice input isn't supported in this browser — just type your answer instead.";
+  }
+  mic.addEventListener("click", () => {
+    if (!recognition) return;
+    if (!recognizing) { recognition.start(); recognizing = true; mic.classList.add("recording"); }
+    else { recognition.stop(); recognizing = false; mic.classList.remove("recording"); }
+  });
+
+  function pickTopic() {
+    current = config.topics[Math.floor(Math.random() * config.topics.length)];
+    categoryEl.textContent = current.cat;
+    questionEl.textContent = current.title || current.q;
+    if (bulletsEl) bulletsEl.innerHTML = (current.bullets || []).map(b => `<li>${b}</li>`).join("");
+  }
+  pickTopic();
+  document.getElementById(config.newTopicId).addEventListener("click", pickTopic);
+
+  start.addEventListener("click", () => {
+    if (config.prepSeconds) {
+      startPhase(config.prepSeconds, config.prepLabel, false);
+    } else {
+      startPhase(config.seconds, config.speakLabel, true);
+    }
+    start.disabled = true;
+  });
+
+  function startPhase(dur, label, enableMic) {
+    seconds = dur;
+    timerEl.textContent = formatTime(seconds);
+    timerEl.classList.remove("warn");
+    if (config.phaseLabelId) document.getElementById(config.phaseLabelId).textContent = label;
+    input.disabled = !enableMic ? false : false;
+    input.value = enableMic ? "" : input.value;
+    submit.disabled = !enableMic;
+    mic.disabled = !enableMic;
+    if (enableMic && recognition && !recognizing) { recognition.start(); recognizing = true; mic.classList.add("recording"); }
+    interval = setInterval(() => {
+      seconds--;
+      timerEl.textContent = formatTime(seconds);
+      if (seconds <= 10) timerEl.classList.add("warn"); else timerEl.classList.remove("warn");
+      if (seconds <= 0) {
+        clearInterval(interval);
+        if (!enableMic && config.prepSeconds) {
+          startPhase(config.seconds, config.speakLabel, true);
+          submit.disabled = false;
+        } else {
+          if (recognition && recognizing) { recognition.stop(); recognizing = false; mic.classList.remove("recording"); }
+          lock(true);
+        }
+      }
+    }, 1000);
+  }
+
+  function lock(auto) {
+    input.disabled = true;
+    submit.disabled = true;
+    mic.disabled = true;
+    if (auto) {
+      locked.classList.add("show");
+      submitResponse();
+    }
+  }
+
+  document.getElementById(config.resetId).addEventListener("click", () => {
+    clearInterval(interval);
+    if (recognition && recognizing) { recognition.stop(); recognizing = false; }
+    seconds = config.prepSeconds || config.seconds;
+    timerEl.textContent = formatTime(seconds);
+    timerEl.classList.remove("warn");
+    if (config.phaseLabelId) document.getElementById(config.phaseLabelId).textContent = config.prepLabel || config.speakLabel;
+    input.value = ""; input.disabled = true;
+    submit.disabled = true; start.disabled = false; mic.disabled = true; mic.classList.remove("recording");
+    locked.classList.remove("show");
+    document.getElementById(config.resultId).innerHTML = "";
+    document.getElementById(config.errorId).innerHTML = "";
+    pickTopic();
+  });
+
+  submit.addEventListener("click", () => {
+    clearInterval(interval);
+    if (recognition && recognizing) { recognition.stop(); recognizing = false; }
+    lock(false);
+    submitResponse();
+  });
+
+  async function submitResponse() {
+    const transcript = input.value.trim();
+    const resultEl = document.getElementById(config.resultId);
+    const errorEl = document.getElementById(config.errorId);
+    const loadingEl = document.getElementById(config.loadingId);
+    errorEl.innerHTML = ""; resultEl.innerHTML = "";
+    if (transcript.split(/\s+/).filter(Boolean).length < 8) {
+      errorEl.innerHTML = '<div class="error-box">Speak or type a bit more before submitting.</div>';
+      return;
+    }
+    loadingEl.style.display = "flex";
+    try {
+      const system = `You are an official IELTS Speaking examiner. Score the transcript strictly using real IELTS Speaking band descriptors for: Fluency & Coherence, Lexical Resource, Grammatical Range & Accuracy, and Pronunciation. Note: Pronunciation is being estimated from a text transcript only (no audio), so treat it as a rough estimate based on disfluency markers, and say so in its comment. Be realistic like a real examiner. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"overallBand":number,"criteria":[{"name":"Fluency & Coherence","band":number,"comment":"max 30 words"},{"name":"Lexical Resource","band":number,"comment":"max 30 words"},{"name":"Grammatical Range & Accuracy","band":number,"comment":"max 30 words"},{"name":"Pronunciation (text-estimated)","band":number,"comment":"max 30 words, mention this is text-based only"}],"strengths":["max 12 words","max 12 words"],"improvements":["max 12 words","max 12 words","max 12 words"]}`;
+      const userText = `Question (${config.partLabel}): ${current.title || current.q}\n\nSpoken transcript:\n${transcript}`;
+      const json = await callClaude(system, userText);
+      renderExamResult(resultEl, json);
+    } catch (e) {
+      errorEl.innerHTML = '<div class="error-box">Could not get a score right now (' + e.message + ').</div>';
+    } finally {
+      loadingEl.style.display = "none";
+    }
+  }
+}
+
+setupSpeakingPart({
+  topics: PART1_TOPICS, seconds: 60, partLabel: "Part 1",
+  timerId: "p1Timer", inputId: "p1Input", submitId: "p1Submit", startId: "p1Start", lockedId: "p1Locked",
+  categoryId: "p1Category", questionId: "p1Question", newTopicId: "p1NewTopic", resetId: "p1Reset",
+  resultId: "p1Result", errorId: "p1Error", loadingId: "p1Loading", micId: "p1Mic", micHintId: "p1MicHint"
+});
+
+setupSpeakingPart({
+  topics: PART2_TOPICS, seconds: 120, prepSeconds: 60, prepLabel: "Part 2 · Preparation (1 min) — jot notes",
+  speakLabel: "Part 2 · Speaking (2 min)", partLabel: "Part 2", phaseLabelId: "p2PhaseLabel",
+  timerId: "p2Timer", inputId: "p2Input", submitId: "p2Submit", startId: "p2Start", lockedId: "p2Locked",
+  categoryId: "p2Category", questionId: "p2Title", bulletsId: "p2Bullets", newTopicId: "p2NewTopic", resetId: "p2Reset",
+  resultId: "p2Result", errorId: "p2Error", loadingId: "p2Loading", micId: "p2Mic", micHintId: "p2MicHint"
+});
+
+setupSpeakingPart({
+  topics: PART3_TOPICS, seconds: 120, partLabel: "Part 3",
+  timerId: "p3Timer", inputId: "p3Input", submitId: "p3Submit", startId: "p3Start", lockedId: "p3Locked",
+  categoryId: "p3Category", questionId: "p3Question", newTopicId: "p3NewTopic", resetId: "p3Reset",
+  resultId: "p3Result", errorId: "p3Error", loadingId: "p3Loading", micId: "p3Mic", micHintId: "p3MicHint"
+});
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+  });
+});
+</script>
 </body>
 </html>
