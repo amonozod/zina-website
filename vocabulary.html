@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary — Zina</title>
+<meta name="description" content="Study IELTS-relevant English vocabulary organized by CEFR level, from A1 to C2, with flippable flashcards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .level-tabs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+  .level-tab{
+    padding:10px 18px; border-radius:20px; border:1px solid var(--rule); background:var(--white);
+    color:var(--muted); font-family:var(--mono); font-size:0.85rem; font-weight:600;
+  }
+  .level-tab.active{ background:var(--gold); border-color:var(--gold); color:#fff; }
+
+  .flash-wrap{ max-width:520px; margin:0 auto; }
+  .flash-progress{ text-align:center; font-family:var(--mono); font-size:0.8rem; color:var(--muted); margin-bottom:14px; }
+  .flashcard{
+    background:var(--white); border:1px solid var(--rule); border-radius:var(--radius-md);
+    min-height:260px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:36px 28px; cursor:pointer; user-select:none; position:relative;
+  }
+  .flashcard .hint{ position:absolute; top:16px; right:18px; font-family:var(--mono); font-size:0.7rem; color:var(--muted); }
+  .flash-word{ font-family:var(--serif); font-size:2rem; font-weight:700; margin-bottom:10px; }
+  .flash-pos{ font-family:var(--mono); font-size:0.78rem; color:var(--gold); text-transform:uppercase; margin-bottom:18px; }
+  .flash-def{ font-size:1.05rem; color:var(--ink); margin-bottom:14px; }
+  .flash-example{ font-size:0.92rem; color:var(--muted); font-style:italic; }
+  .flash-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:20px; gap:12px; }
+  .flash-dots{ display:flex; gap:6px; }
+  .flash-dot{ width:7px; height:7px; border-radius:50%; background:var(--rule); }
+  .flash-dot.active{ background:var(--gold); }
+  .flash-shuffle{ text-align:center; margin-top:24px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Zina<span>.</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="listening.html">Listening</a>
+      <a href="reading.html">Reading</a>
+      <a href="writing.html">Writing</a>
+      <a href="speaking.html">Speaking</a>
+      <a href="vocabulary.html" class="active">Vocabulary</a>
+      <a href="mock-tests.html">Mock tests</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="header-cta">
+      <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Zina</a> / Vocabulary</div>
+    <div class="kicker">CEFR A1 – C2</div>
+    <h1 class="h-lg">Build your vocabulary, one level at a time.</h1>
+    <p class="lede">Flip through words organized by CEFR level — from everyday basics to the precise, academic vocabulary that raises your Lexical Resource score.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="level-tabs" id="levelTabs"></div>
+
+    <div class="flash-wrap">
+      <div class="flash-progress"><span id="cardIndex">1</span> / <span id="cardTotal">10</span></div>
+      <div class="flashcard" id="flashcard">
+        <span class="hint">Tap to flip</span>
+        <div id="cardFront">
+          <div class="flash-word" id="wordText">word</div>
+          <div class="flash-pos" id="posText">noun</div>
+        </div>
+        <div id="cardBack" style="display:none;">
+          <div class="flash-def" id="defText">definition</div>
+          <div class="flash-example" id="exampleText">"example sentence"</div>
+        </div>
+      </div>
+      <div class="flash-nav">
+        <button class="btn btn-outline btn-sm" id="prevBtn">← Prev</button>
+        <div class="flash-dots" id="flashDots"></div>
+        <button class="btn btn-outline btn-sm" id="nextBtn">Next →</button>
+      </div>
+      <div class="flash-shuffle">
+        <button class="btn btn-primary btn-sm" id="shuffleBtn">🔀 Shuffle this level</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Zina.</div>
+        <p class="footer-note">An AI platform for Academic IELTS prep.</p>
+      </div>
+      <div>
+        <h5>Skills</h5>
+        <a href="listening.html">Listening</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="speaking.html">Speaking</a>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="mock-tests.html">Mock tests</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a href="about.html#faq">FAQ</a>
+        <a href="about.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zina. All rights reserved.</span>
+      <span>Zina is an independent prep platform and is not affiliated with IELTS, British Council, IDP, or Cambridge.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script>
+const VOCAB = {
+  A1: [
+    { w: "family", pos: "noun", def: "A group of people related by blood or marriage.", ex: "My family lives in a small house near the city centre." },
+    { w: "happy", pos: "adjective", def: "Feeling pleasure or contentment.", ex: "She felt happy when she passed her exam." },
+    { w: "journey", pos: "noun", def: "An act of travelling from one place to another.", ex: "The journey to the airport took two hours." },
+    { w: "weather", pos: "noun", def: "The state of the atmosphere at a particular time and place.", ex: "The weather was sunny all weekend." },
+    { w: "difficult", pos: "adjective", def: "Needing much effort or skill to accomplish.", ex: "This exercise is too difficult for beginners." },
+    { w: "usually", pos: "adverb", def: "Under normal conditions; most of the time.", ex: "I usually wake up at seven in the morning." },
+    { w: "neighbour", pos: "noun", def: "A person living next door to or near another.", ex: "Our neighbour helped us move the furniture." },
+    { w: "arrive", pos: "verb", def: "To reach a destination.", ex: "The train will arrive at nine o'clock." },
+  ],
+  A2: [
+    { w: "environment", pos: "noun", def: "The natural world, especially as affected by human activity.", ex: "Plastic waste is harmful to the environment." },
+    { w: "opportunity", pos: "noun", def: "A set of circumstances that makes it possible to do something.", ex: "Studying abroad gave her a great opportunity to learn a new language." },
+    { w: "improve", pos: "verb", def: "To make or become better.", ex: "He wants to improve his English before the exam." },
+    { w: "convenient", pos: "adjective", def: "Fitting in well with a person's needs or plans.", ex: "The new bus route is very convenient for commuters." },
+    { w: "reliable", pos: "adjective", def: "Consistently good in quality or performance; able to be trusted.", ex: "She is a reliable colleague who always meets deadlines." },
+    { w: "advantage", pos: "noun", def: "A condition giving a greater chance of success.", ex: "One advantage of remote work is saving time on commuting." },
+    { w: "achieve", pos: "verb", def: "To successfully reach a desired goal.", ex: "It took years of hard work to achieve his dream." },
+    { w: "encourage", pos: "verb", def: "To give support or confidence to someone.", ex: "Teachers should encourage students to ask questions." },
+  ],
+  B1: [
+    { w: "significant", pos: "adjective", def: "Sufficiently great or important to be worthy of attention.", ex: "There has been a significant increase in online shopping." },
+    { w: "consequence", pos: "noun", def: "A result or effect of an action or condition.", ex: "Pollution is a serious consequence of rapid industrialisation." },
+    { w: "sustainable", pos: "adjective", def: "Able to be maintained at a certain rate or level without depleting resources.", ex: "The company switched to sustainable packaging materials." },
+    { w: "generation", pos: "noun", def: "All the people born and living at about the same time.", ex: "The younger generation relies heavily on smartphones." },
+    { w: "contribute", pos: "verb", def: "To give something, especially money or time, to help achieve something.", ex: "Volunteers contribute several hours each week to the shelter." },
+    { w: "perspective", pos: "noun", def: "A particular attitude toward or way of regarding something.", ex: "Travelling abroad gave her a new perspective on her own culture." },
+    { w: "adapt", pos: "verb", def: "To adjust to new conditions.", ex: "Businesses had to adapt quickly to the changing market." },
+    { w: "beneficial", pos: "adjective", def: "Resulting in good; favourable or advantageous.", ex: "Regular exercise is beneficial for mental health." },
+  ],
+  B2: [
+    { w: "controversial", pos: "adjective", def: "Giving rise to public disagreement.", ex: "The proposal to raise tuition fees remains highly controversial." },
+    { w: "implement", pos: "verb", def: "To put a decision or plan into effect.", ex: "The government plans to implement new environmental regulations next year." },
+    { w: "phenomenon", pos: "noun", def: "A fact or situation that is observed to exist.", ex: "Urban migration is a common phenomenon in developing countries." },
+    { w: "detrimental", pos: "adjective", def: "Tending to cause harm.", ex: "Excessive screen time can be detrimental to children's eyesight." },
+    { w: "prevalent", pos: "adjective", def: "Widespread in a particular area or at a particular time.", ex: "Obesity has become increasingly prevalent in industrialised nations." },
+    { w: "mitigate", pos: "verb", def: "To make something less severe or serious.", ex: "Governments are looking for ways to mitigate the effects of climate change." },
+    { w: "inevitable", pos: "adjective", def: "Certain to happen; unavoidable.", ex: "Some economists argue that a recession was inevitable." },
+    { w: "discrepancy", pos: "noun", def: "A lack of compatibility or similarity between two facts.", ex: "There is a clear discrepancy between the two sets of data." },
+  ],
+  C1: [
+    { w: "unprecedented", pos: "adjective", def: "Never done or known before.", ex: "The pandemic caused unprecedented disruption to global trade." },
+    { w: "exacerbate", pos: "verb", def: "To make a problem or bad situation worse.", ex: "Poor urban planning has exacerbated traffic congestion in the capital." },
+    { w: "ubiquitous", pos: "adjective", def: "Present, appearing, or found everywhere.", ex: "Smartphones have become ubiquitous in modern society." },
+    { w: "paradigm", pos: "noun", def: "A typical example or pattern of something; a model.", ex: "Remote work has created a new paradigm for how companies operate." },
+    { w: "circumvent", pos: "verb", def: "To find a way around an obstacle or rule.", ex: "Some companies attempt to circumvent environmental regulations." },
+    { w: "empirical", pos: "adjective", def: "Based on observation or experience rather than theory.", ex: "The study provides strong empirical evidence for the theory." },
+    { w: "dichotomy", pos: "noun", def: "A division or contrast between two things that are opposed.", ex: "There is a clear dichotomy between rural and urban lifestyles." },
+    { w: "corroborate", pos: "verb", def: "To confirm or give support to a statement or theory.", ex: "Further research corroborated the initial findings." },
+  ],
+  C2: [
+    { w: "quintessential", pos: "adjective", def: "Representing the most perfect or typical example of a quality or class.", ex: "The novel is a quintessential example of 19th-century realism." },
+    { w: "obfuscate", pos: "verb", def: "To render something unclear, confusing, or difficult to understand.", ex: "Politicians sometimes use technical jargon to obfuscate the truth." },
+    { w: "epitomise", pos: "verb", def: "To be a perfect example of a quality or type.", ex: "Her career epitomises the struggles faced by women in science." },
+    { w: "conundrum", pos: "noun", def: "A confusing and difficult problem or question.", ex: "Balancing economic growth with environmental protection remains a conundrum." },
+    { w: "pernicious", pos: "adjective", def: "Having a harmful effect, especially in a gradual or subtle way.", ex: "The pernicious influence of misinformation is hard to counteract." },
+    { w: "esoteric", pos: "adjective", def: "Intended for or likely to be understood by only a small number of people.", ex: "The lecture covered fairly esoteric aspects of quantum theory." },
+    { w: "vindicate", pos: "verb", def: "To clear someone of blame or suspicion; to prove a claim to be justified.", ex: "The new evidence ultimately vindicated her original hypothesis." },
+    { w: "profligate", pos: "adjective", def: "Recklessly wasteful, especially with money or resources.", ex: "Critics accused the administration of profligate public spending." },
+  ],
+};
+
+const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+let currentLevel = "A1";
+let currentIndex = 0;
+let flipped = false;
+let deck = VOCAB[currentLevel];
+
+const levelTabsEl = document.getElementById("levelTabs");
+LEVELS.forEach(lv => {
+  const btn = document.createElement("button");
+  btn.className = "level-tab" + (lv === currentLevel ? " active" : "");
+  btn.textContent = lv;
+  btn.addEventListener("click", () => {
+    currentLevel = lv;
+    deck = VOCAB[lv];
+    currentIndex = 0;
+    flipped = false;
+    document.querySelectorAll(".level-tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderCard();
+  });
+  levelTabsEl.appendChild(btn);
+});
+
+const flashcardEl = document.getElementById("flashcard");
+const cardFront = document.getElementById("cardFront");
+const cardBack = document.getElementById("cardBack");
+const dotsEl = document.getElementById("flashDots");
+
+function renderDots() {
+  dotsEl.innerHTML = deck.map((_, i) => `<span class="flash-dot${i === currentIndex ? " active" : ""}"></span>`).join("");
+}
+
+function renderCard() {
+  const card = deck[currentIndex];
+  document.getElementById("wordText").textContent = card.w;
+  document.getElementById("posText").textContent = card.pos;
+  document.getElementById("defText").textContent = card.def;
+  document.getElementById("exampleText").textContent = "\u201C" + card.ex + "\u201D";
+  document.getElementById("cardIndex").textContent = currentIndex + 1;
+  document.getElementById("cardTotal").textContent = deck.length;
+  cardFront.style.display = "block";
+  cardBack.style.display = "none";
+  flipped = false;
+  renderDots();
+}
+
+flashcardEl.addEventListener("click", () => {
+  flipped = !flipped;
+  cardFront.style.display = flipped ? "none" : "block";
+  cardBack.style.display = flipped ? "block" : "none";
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+  renderCard();
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % deck.length;
+  renderCard();
+});
+document.getElementById("shuffleBtn").addEventListener("click", () => {
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  currentIndex = 0;
+  renderCard();
+});
+
+renderCard();
+</script>
+</body>
+</html>

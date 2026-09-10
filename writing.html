@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Writing — Zina</title>
-<meta name="description" content="Practice IELTS Writing Task 1 and Task 2 under a real timer and get instant AI feedback scored against all 4 official criteria.">
+<meta name="description" content="Practice IELTS Writing Task 1 and Task 2 separately, each under a real timer, with instant AI feedback on all 4 official criteria.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
       <a href="reading.html">Reading</a>
       <a href="writing.html" class="active">Writing</a>
       <a href="speaking.html">Speaking</a>
+      <a href="vocabulary.html">Vocabulary</a>
       <a href="mock-tests.html">Mock tests</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
@@ -36,90 +37,26 @@
     <div class="breadcrumb"><a href="index.html">Zina</a> / Writing</div>
     <div class="kicker">03 · Skill</div>
     <h1 class="h-lg">Writing — what a tutor shows you in an hour, AI shows you in a minute.</h1>
-    <p class="lede">Write a real Task 1 or Task 2 response below under exam timing, and Zina marks it like an examiner against all 4 official criteria.</p>
-    <div class="btn-row">
-      <a href="#practice" class="btn btn-gold">Start practicing below</a>
-      <a href="#criteria" class="btn btn-outline">See the criteria</a>
-    </div>
+    <p class="lede">Task 1 and Task 2 are different skills — a report versus an argument. Practice them separately, each scored against all 4 official criteria.</p>
   </div>
 </section>
 
-<section class="section" id="practice">
+<section class="section">
   <div class="wrap">
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="task1">Task 1</button>
-      <button class="tab-btn" data-tab="task2">Task 2</button>
-    </div>
-
-    <!-- ============ TASK 1 ============ -->
-    <div class="panel active" id="panel-task1">
-      <div class="exam-topbar">
-        <div>
-          <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Task 1 · 20 minutes</div>
-          <div class="timer" id="t1Timer">20:00</div>
-        </div>
-        <div>
-          <button class="btn btn-outline btn-sm" id="t1NewTopic">New topic</button>
-          <button class="btn btn-primary btn-sm" id="t1Start">Start exam</button>
-        </div>
+    <div class="test-set-grid" style="grid-template-columns:repeat(2, 1fr);">
+      <div class="test-set-card">
+        <h3>Task 1 — Report</h3>
+        <a href="writing-task1.html" class="test-set-row">20 minutes · 15 real exam charts <span class="arrow">→</span></a>
       </div>
-
-      <div class="cue-card">
-        <div class="phase-label" id="t1Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Category</div>
-        <h3 id="t1Question">Press "Start exam" to get a real Task 1 question and begin the timer.</h3>
+      <div class="test-set-card">
+        <h3>Task 2 — Essay</h3>
+        <a href="writing-task2.html" class="test-set-row">40 minutes · 16 real exam questions <span class="arrow">→</span></a>
       </div>
-
-      <div class="locked-banner" id="t1Locked">Time's up! Your response has been locked and submitted automatically for scoring.</div>
-
-      <textarea class="exam-input" id="t1Input" placeholder="Your response will unlock here once the exam starts..." disabled></textarea>
-      <div class="word-count"><span id="t1Words">0</span> words (aim for 150+)</div>
-
-      <div class="exam-actions">
-        <button class="btn btn-gold" id="t1Submit" disabled>Submit for AI feedback</button>
-        <button class="btn btn-outline" id="t1Reset">Reset</button>
-      </div>
-
-      <div id="t1Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your response against IELTS Writing criteria…</div>
-      <div id="t1Error"></div>
-      <div id="t1Result"></div>
-    </div>
-
-    <!-- ============ TASK 2 ============ -->
-    <div class="panel" id="panel-task2">
-      <div class="exam-topbar">
-        <div>
-          <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Task 2 · 40 minutes</div>
-          <div class="timer" id="t2Timer">40:00</div>
-        </div>
-        <div>
-          <button class="btn btn-outline btn-sm" id="t2NewTopic">New topic</button>
-          <button class="btn btn-primary btn-sm" id="t2Start">Start exam</button>
-        </div>
-      </div>
-
-      <div class="cue-card">
-        <div class="phase-label" id="t2Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Category</div>
-        <h3 id="t2Question">Press "Start exam" to get a real Task 2 question and begin the timer.</h3>
-      </div>
-
-      <div class="locked-banner" id="t2Locked">Time's up! Your essay has been locked and submitted automatically for scoring.</div>
-
-      <textarea class="exam-input" id="t2Input" placeholder="Your essay will unlock here once the exam starts..." disabled></textarea>
-      <div class="word-count"><span id="t2Words">0</span> words (aim for 250+)</div>
-
-      <div class="exam-actions">
-        <button class="btn btn-gold" id="t2Submit" disabled>Submit for AI feedback</button>
-        <button class="btn btn-outline" id="t2Reset">Reset</button>
-      </div>
-
-      <div id="t2Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your essay against IELTS Writing criteria…</div>
-      <div id="t2Error"></div>
-      <div id="t2Result"></div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="format">
+<section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
       <div><h2 class="h-lg">Exam format</h2></div>
@@ -159,10 +96,13 @@
 <section class="section section-ink">
   <div class="wrap cta-band">
     <div>
-      <h2 class="h-lg">Get your first essay checked now</h2>
-      <p class="lede">Results are ready in under a minute — scroll up and try it above.</p>
+      <h2 class="h-lg">Pick a task and start now</h2>
+      <p class="lede">Results are ready in under a minute.</p>
     </div>
-    <a href="#practice" class="btn btn-gold">Practice now</a>
+    <div class="btn-row" style="margin-top:0;">
+      <a href="writing-task1.html" class="btn btn-gold">Task 1</a>
+      <a href="writing-task2.html" class="btn btn-outline">Task 2</a>
+    </div>
   </div>
 </section>
 
@@ -200,137 +140,7 @@
 </footer>
 
 <script src="assets/script.js"></script>
+<script src="assets/charts.js"></script>
 <script src="assets/exam-common.js"></script>
-<script>
-const TASK1_TOPICS = [
-  { cat: "Line Graph", q: "The graph shows the number of international students in four countries (UK, USA, Australia, Canada) from 2010 to 2020. The USA rose from about 700,000 to 1 million students. The UK grew from 400,000 to 500,000. Australia doubled from 300,000 to 600,000, and Canada grew fastest, from 200,000 to 650,000. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
-  { cat: "Bar Chart", q: "The chart shows average weekly hours spent on household chores by men and women in three countries. In Country A, women spent 18 hours and men spent 6. In Country B, women spent 14 hours and men spent 9. In Country C, the gap was smallest: women spent 11 hours and men spent 10. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
-  { cat: "Pie Charts", q: "The two pie charts show household energy consumption by source in 2000 and 2020. In 2000, coal made up 45%, gas 30%, renewables 5%, and other sources 20%. By 2020, coal fell to 15%, gas rose to 35%, renewables rose sharply to 35%, and other sources made up 15%. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
-  { cat: "Table", q: "The table shows the percentage of households with internet access in four countries in 2005, 2015, and 2025 (projected). Country W rose from 40% to 75% to a projected 92%. Country X rose from 20% to 60% to a projected 88%. Country Y rose slowly from 15% to 35% to a projected 55%. Country Z rose from 55% to 90% to a projected 98%. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
-];
-
-const TASK2_TOPICS = [
-  { cat: "Education", q: "Some people think universities should focus only on subjects useful for future careers, while others believe a broad general education is more valuable. Discuss both views and give your own opinion." },
-  { cat: "Technology & Society", q: "As artificial intelligence takes over more workplace tasks, some argue this will create widespread unemployment, while others believe it will simply change the nature of jobs. Discuss both views and give your opinion." },
-  { cat: "Environment", q: "Many governments are encouraging citizens to reduce car use in favour of public transport and cycling. To what extent do you agree that individuals, rather than governments, are responsible for reducing environmental damage?" },
-  { cat: "Health & Lifestyle", q: "In many countries, the number of people working from home has increased significantly. Do the advantages of this trend outweigh the disadvantages for individual wellbeing?" },
-  { cat: "Crime & Justice", q: "Some people believe that prison is the most effective way to deal with young offenders, while others think community-based rehabilitation programmes work better. Discuss both views and give your own opinion." },
-  { cat: "Government, Society & Economy", q: "Some argue that governments should spend more public money supporting the arts, while others believe this money would be better spent on healthcare and education. Discuss both views and give your own opinion." },
-];
-
-function setupWritingTask(config) {
-  let current = null;
-  let seconds = config.seconds;
-  let interval = null;
-
-  const timerEl = document.getElementById(config.timerId);
-  const input = document.getElementById(config.inputId);
-  const words = document.getElementById(config.wordsId);
-  const submit = document.getElementById(config.submitId);
-  const start = document.getElementById(config.startId);
-  const locked = document.getElementById(config.lockedId);
-  const categoryEl = document.getElementById(config.categoryId);
-  const questionEl = document.getElementById(config.questionId);
-
-  function pickTopic() {
-    current = config.topics[Math.floor(Math.random() * config.topics.length)];
-    categoryEl.textContent = current.cat;
-    questionEl.textContent = current.q;
-  }
-  pickTopic();
-  document.getElementById(config.newTopicId).addEventListener("click", pickTopic);
-
-  input.addEventListener("input", () => {
-    words.textContent = input.value.trim().split(/\s+/).filter(Boolean).length;
-  });
-
-  start.addEventListener("click", () => {
-    input.disabled = false;
-    submit.disabled = false;
-    start.disabled = true;
-    input.focus();
-    interval = setInterval(() => {
-      seconds--;
-      timerEl.textContent = formatTime(seconds);
-      if (seconds <= 60) timerEl.classList.add("warn");
-      if (seconds <= 0) {
-        clearInterval(interval);
-        lock(true);
-      }
-    }, 1000);
-  });
-
-  function lock(auto) {
-    input.disabled = true;
-    submit.disabled = true;
-    if (auto) {
-      locked.classList.add("show");
-      submitResponse();
-    }
-  }
-
-  document.getElementById(config.resetId).addEventListener("click", () => {
-    clearInterval(interval);
-    seconds = config.seconds;
-    timerEl.textContent = formatTime(seconds);
-    timerEl.classList.remove("warn");
-    input.value = ""; input.disabled = true;
-    submit.disabled = true; start.disabled = false;
-    locked.classList.remove("show");
-    words.textContent = "0";
-    document.getElementById(config.resultId).innerHTML = "";
-    document.getElementById(config.errorId).innerHTML = "";
-    pickTopic();
-  });
-
-  submit.addEventListener("click", () => { clearInterval(interval); lock(false); submitResponse(); });
-
-  async function submitResponse() {
-    const essay = input.value.trim();
-    const resultEl = document.getElementById(config.resultId);
-    const errorEl = document.getElementById(config.errorId);
-    const loadingEl = document.getElementById(config.loadingId);
-    errorEl.innerHTML = ""; resultEl.innerHTML = "";
-    if (essay.split(/\s+/).filter(Boolean).length < config.minWords) {
-      errorEl.innerHTML = '<div class="error-box">Write a bit more before submitting.</div>';
-      return;
-    }
-    loadingEl.style.display = "flex";
-    try {
-      const system = `You are an official IELTS Writing examiner. Score the ${config.taskLabel} response strictly using the real IELTS Writing band descriptors for these 4 criteria: Task Achievement, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy. Be realistic and strict like a real examiner, do not inflate scores. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"overallBand":number,"criteria":[{"name":"Task Achievement","band":number,"comment":"max 30 words"},{"name":"Coherence & Cohesion","band":number,"comment":"max 30 words"},{"name":"Lexical Resource","band":number,"comment":"max 30 words"},{"name":"Grammatical Range & Accuracy","band":number,"comment":"max 30 words"}],"strengths":["max 12 words","max 12 words"],"improvements":["max 12 words","max 12 words","max 12 words"]}`;
-      const userText = `Question: ${current.q}\n\nResponse:\n${essay}`;
-      const json = await callClaude(system, userText);
-      renderExamResult(resultEl, json);
-    } catch (e) {
-      errorEl.innerHTML = '<div class="error-box">Could not get a score right now (' + e.message + ').</div>';
-    } finally {
-      loadingEl.style.display = "none";
-    }
-  }
-}
-
-setupWritingTask({
-  topics: TASK1_TOPICS, seconds: 20 * 60, minWords: 20, taskLabel: "IELTS Writing Task 1",
-  timerId: "t1Timer", inputId: "t1Input", wordsId: "t1Words", submitId: "t1Submit", startId: "t1Start",
-  lockedId: "t1Locked", categoryId: "t1Category", questionId: "t1Question", newTopicId: "t1NewTopic",
-  resetId: "t1Reset", resultId: "t1Result", errorId: "t1Error", loadingId: "t1Loading"
-});
-
-setupWritingTask({
-  topics: TASK2_TOPICS, seconds: 40 * 60, minWords: 30, taskLabel: "IELTS Writing Task 2",
-  timerId: "t2Timer", inputId: "t2Input", wordsId: "t2Words", submitId: "t2Submit", startId: "t2Start",
-  lockedId: "t2Locked", categoryId: "t2Category", questionId: "t2Question", newTopicId: "t2NewTopic",
-  resetId: "t2Reset", resultId: "t2Result", errorId: "t2Error", loadingId: "t2Loading"
-});
-
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
-  });
-});
-</script>
 </body>
 </html>

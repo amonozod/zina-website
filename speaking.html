@@ -20,6 +20,7 @@
       <a href="reading.html">Reading</a>
       <a href="writing.html">Writing</a>
       <a href="speaking.html" class="active">Speaking</a>
+      <a href="vocabulary.html">Vocabulary</a>
       <a href="mock-tests.html">Mock tests</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
@@ -218,25 +219,22 @@
 <script src="assets/exam-common.js"></script>
 <script>
 const PART1_TOPICS = [
-  { cat: "Home & Family", q: "Let's talk about your hometown. What do you like most about the place where you live?" },
-  { cat: "Work / Study", q: "Do you work or are you a student? What do you find most interesting about it?" },
-  { cat: "Hobbies", q: "What do you usually do in your free time, and why do you enjoy it?" },
-  { cat: "Daily Life", q: "How do you usually travel to work or school, and would you like to change that?" },
+  { cat: "Studies", q: "Do you work or are you a student?" },
+  { cat: "Studies", q: "What do you like most about your studies?" },
+  { cat: "Teachers", q: "Who is your favourite teacher, and why?" },
+  { cat: "Teachers", q: "Who do you like most — your primary or secondary teachers?" },
+  { cat: "Teachers", q: "Do you keep in touch with any of your primary school teachers?" },
+  { cat: "Daily Life", q: "What clothes do you like to wear?" },
 ];
 
 const PART2_TOPICS = [
-  { cat: "Place", title: "Describe a place in your hometown that has changed over the years.", bullets: ["Where it is", "What it used to be like", "What it is like now", "And explain how you feel about this change"] },
-  { cat: "Person", title: "Describe a person who has influenced your studies or career choices.", bullets: ["Who this person is", "How you know them", "What advice or influence they gave you", "And explain why this influence was important to you"] },
-  { cat: "Object", title: "Describe a piece of technology you find useful in daily life.", bullets: ["What it is", "How often you use it", "What you use it for", "And explain why it is useful to you"] },
-  { cat: "Event", title: "Describe a journey that did not go as planned.", bullets: ["Where you were going", "What happened during the journey", "How you dealt with the situation", "And explain how you felt about it afterwards"] },
-  { cat: "Activity", title: "Describe a skill you would like to learn in the future.", bullets: ["What the skill is", "How you would learn it", "How much time it would take", "And explain why you want to learn it"] },
+  { cat: "Technology", title: "Describe a technology you had a problem with.", bullets: [] },
 ];
 
 const PART3_TOPICS = [
-  { cat: "Technology & Society", q: "How do you think technology will change the way people work in the future?" },
-  { cat: "Education", q: "Do you think the skills people need for work are different from what schools teach?" },
-  { cat: "Environment", q: "What can individuals do, realistically, to help protect the environment?" },
-  { cat: "Culture", q: "How has globalisation affected traditional cultures in your country?" },
+  { cat: "Technology & Medicine", q: "Technology has an impact on fields like medicine. Do you think this is a bad thing?" },
+  { cat: "Technology & Future", q: "To what extent do you agree that technology is influencing our future?" },
+  { cat: "Technology at Home", q: "What technologies do most people have in their homes?" },
 ];
 
 function setupSpeakingPart(config) {

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Task 2 — Zina</title>
+<meta name="description" content="Practice IELTS Writing Task 2 essays under a 40-minute timer, with instant AI feedback on all 4 official criteria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Zina<span>.</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="listening.html">Listening</a>
+      <a href="reading.html">Reading</a>
+      <a href="writing.html" class="active">Writing</a>
+      <a href="speaking.html">Speaking</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="mock-tests.html">Mock tests</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-cta">
+      <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Zina</a> / <a href="writing.html">Writing</a> / Task 2</div>
+    <div class="kicker">40 minutes · Essay</div>
+    <h1 class="h-lg">Writing Task 2 — take a position and argue it clearly.</h1>
+    <p class="lede">Real exam essay questions across education, technology, environment, and society. Get sentence-level feedback on every submission.</p>
+    <div class="btn-row">
+      <a href="writing-task1.html" class="btn btn-outline">← Switch to Task 1</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="exam-topbar">
+      <div>
+        <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Task 2 · 40 minutes</div>
+        <div class="timer" id="t2Timer">40:00</div>
+      </div>
+      <div>
+        <button class="btn btn-outline btn-sm" id="t2NewTopic">New topic</button>
+        <button class="btn btn-primary btn-sm" id="t2Start">Start exam</button>
+      </div>
+    </div>
+
+    <div class="cue-card">
+      <div class="phase-label" id="t2Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Category</div>
+      <h3 id="t2Question">Press "Start exam" to get a real Task 2 question and begin the timer.</h3>
+    </div>
+
+    <div class="locked-banner" id="t2Locked">Time's up! Your essay has been locked and submitted automatically for scoring.</div>
+
+    <textarea class="exam-input" id="t2Input" placeholder="Your essay will unlock here once the exam starts..." disabled></textarea>
+    <div class="word-count"><span id="t2Words">0</span> words (aim for 250+)</div>
+
+    <div class="exam-actions">
+      <button class="btn btn-gold" id="t2Submit" disabled>Submit for AI feedback</button>
+      <button class="btn btn-outline" id="t2Reset">Reset</button>
+    </div>
+
+    <div id="t2Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your essay against IELTS Writing criteria…</div>
+    <div id="t2Error"></div>
+    <div id="t2Result"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap grid-2">
+    <div>
+      <div class="kicker">4 official criteria</div>
+      <h2 class="h-lg">Know exactly where each score comes from</h2>
+      <ul style="margin-top:20px; display:grid; gap:14px;">
+        <li><b>Task Achievement</b> — whether you fully address the prompt with a clear position.</li>
+        <li><b>Coherence &amp; Cohesion</b> — whether your ideas flow logically and linking is used well.</li>
+        <li><b>Lexical Resource</b> — the range and precision of your vocabulary.</li>
+        <li><b>Grammatical Range &amp; Accuracy</b> — variety of sentence structures and grammatical correctness.</li>
+      </ul>
+    </div>
+    <div class="mockup">
+      <div class="mockup-bar"><span></span><span></span><span></span></div>
+      <div class="mockup-body">
+        <p class="essay-line">In conclusion, <span class="mark tr">I think that</span> governments should invest more in public transport <span class="mark gr">because it reduce</span> traffic and pollution in big cities.</p>
+        <div class="annot"><b>Coherence:</b> "I think that" is too personal and weak for a conclusion — try a more formal alternative like "Overall, it can be argued that."</div>
+        <div class="annot"><b>Grammar:</b> "it reduce" should be "it reduces" to agree with the third-person singular subject.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Zina.</div>
+        <p class="footer-note">An AI platform for Academic IELTS prep.</p>
+      </div>
+      <div>
+        <h5>Skills</h5>
+        <a href="listening.html">Listening</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="speaking.html">Speaking</a>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="mock-tests.html">Mock tests</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a href="about.html#faq">FAQ</a>
+        <a href="about.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zina. All rights reserved.</span>
+      <span>Zina is an independent prep platform and is not affiliated with IELTS, British Council, IDP, or Cambridge.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script src="assets/exam-common.js"></script>
+<script>
+const TASK2_TOPICS = [
+  { cat: "Economy & Environment", q: "Some people believe that economic growth is the only way to reduce poverty and hunger, while others argue that economic growth can harm the environment. Discuss both views and give your own opinion." },
+  { cat: "Media & Society", q: "Some people believe that the media, such as television and newspapers, give overly detailed descriptions of crimes. To what extent do you agree or disagree?" },
+  { cat: "Education", q: "Art classes such as painting or drawing are important for children's development, so they should be compulsory in high school. Do you agree or disagree?" },
+  { cat: "Work & Society", q: "Nowadays, more and more people have to compete with young people for the same jobs. What problems does this cause, and what are some possible solutions?" },
+  { cat: "Food & Society", q: "In many countries, more and more people choose to buy imported food rather than food produced locally. Why do people buy imported food, and what could be done to encourage people to buy local food instead?" },
+  { cat: "Society & Youth", q: "Young people are often influenced by their peers. This is called peer group pressure. Do the advantages of this outweigh the disadvantages?" },
+  { cat: "Work & Retirement", q: "It is a good idea for people to continue working past retirement age, if it is possible for them to do so. Do you agree or disagree?" },
+  { cat: "Education & Society", q: "University students should pay the full cost of their studies because a university education mainly benefits the individual rather than society as a whole. To what extent do you agree or disagree?" },
+  { cat: "Media & Economy", q: "Some people say advertising has positive economic effects. Others think it has negative social effects because it makes people dissatisfied with who they are and what they have. Discuss both views and give your own opinion." },
+  { cat: "Government & Society", q: "The shortage of housing in big cities can cause severe consequences. Only government action can solve this problem. To what extent do you agree or disagree?" },
+  { cat: "Work & Business", q: "Interviews form the basic selection criteria for most large companies. However, some people think that interviews are not a reliable method of choosing whom to employ, and that there are better methods. To what extent do you agree or disagree?" },
+  { cat: "Health & Society", q: "An increasing number of people are choosing to have cosmetic surgery to improve their appearance. Why do people have operations to change the way they look, and do you think this is a positive or negative development?" },
+  { cat: "Technology & Work", q: "Many people work from home today using modern technology. Some think that only the workers benefit from this, not the employers. To what extent do you agree or disagree?" },
+  { cat: "Society & Values", q: "Some people believe that to achieve success, people need to be hardworking and determined, while others think that factors like money and personal appearance play a more important role. Discuss both views and give your own opinion." },
+  { cat: "Environment & Society", q: "Nowadays, many large cities have become too big and overcrowded. What are the reasons for this, and what can be done to address it?" },
+  { cat: "Environment & Economy", q: "Pollution and other environmental problems result from a country becoming more developed and wealthy. Some people think this cannot be avoided. To what extent do you agree or disagree?" },
+];
+
+let current = null;
+let seconds = 40 * 60;
+let interval = null;
+
+const timerEl = document.getElementById("t2Timer");
+const input = document.getElementById("t2Input");
+const words = document.getElementById("t2Words");
+const submit = document.getElementById("t2Submit");
+const start = document.getElementById("t2Start");
+const locked = document.getElementById("t2Locked");
+const categoryEl = document.getElementById("t2Category");
+const questionEl = document.getElementById("t2Question");
+
+function pickTopic() {
+  current = TASK2_TOPICS[Math.floor(Math.random() * TASK2_TOPICS.length)];
+  categoryEl.textContent = current.cat;
+  questionEl.textContent = current.q;
+}
+pickTopic();
+document.getElementById("t2NewTopic").addEventListener("click", pickTopic);
+
+input.addEventListener("input", () => {
+  words.textContent = input.value.trim().split(/\s+/).filter(Boolean).length;
+});
+
+start.addEventListener("click", () => {
+  input.disabled = false;
+  submit.disabled = false;
+  start.disabled = true;
+  input.focus();
+  interval = setInterval(() => {
+    seconds--;
+    timerEl.textContent = formatTime(seconds);
+    if (seconds <= 60) timerEl.classList.add("warn");
+    if (seconds <= 0) { clearInterval(interval); lock(true); }
+  }, 1000);
+});
+
+function lock(auto) {
+  input.disabled = true;
+  submit.disabled = true;
+  if (auto) { locked.classList.add("show"); submitResponse(); }
+}
+
+document.getElementById("t2Reset").addEventListener("click", () => {
+  clearInterval(interval);
+  seconds = 40 * 60;
+  timerEl.textContent = "40:00";
+  timerEl.classList.remove("warn");
+  input.value = ""; input.disabled = true;
+  submit.disabled = true; start.disabled = false;
+  locked.classList.remove("show");
+  words.textContent = "0";
+  document.getElementById("t2Result").innerHTML = "";
+  document.getElementById("t2Error").innerHTML = "";
+  pickTopic();
+});
+
+submit.addEventListener("click", () => { clearInterval(interval); lock(false); submitResponse(); });
+
+async function submitResponse() {
+  const essay = input.value.trim();
+  const resultEl = document.getElementById("t2Result");
+  const errorEl = document.getElementById("t2Error");
+  const loadingEl = document.getElementById("t2Loading");
+  errorEl.innerHTML = ""; resultEl.innerHTML = "";
+  if (essay.split(/\s+/).filter(Boolean).length < 30) {
+    errorEl.innerHTML = '<div class="error-box">Write a bit more before submitting.</div>';
+    return;
+  }
+  loadingEl.style.display = "flex";
+  try {
+    const system = `You are an official IELTS Writing examiner. Score the IELTS Writing Task 2 essay strictly using the real IELTS Writing band descriptors for these 4 criteria: Task Achievement, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy. Be realistic and strict like a real examiner, do not inflate scores. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"overallBand":number,"criteria":[{"name":"Task Achievement","band":number,"comment":"max 30 words"},{"name":"Coherence & Cohesion","band":number,"comment":"max 30 words"},{"name":"Lexical Resource","band":number,"comment":"max 30 words"},{"name":"Grammatical Range & Accuracy","band":number,"comment":"max 30 words"}],"strengths":["max 12 words","max 12 words"],"improvements":["max 12 words","max 12 words","max 12 words"]}`;
+    const userText = `Question: ${current.q}\n\nEssay:\n${essay}`;
+    const json = await callClaude(system, userText);
+    renderExamResult(resultEl, json);
+  } catch (e) {
+    errorEl.innerHTML = '<div class="error-box">Could not get a score right now (' + e.message + ').</div>';
+  } finally {
+    loadingEl.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

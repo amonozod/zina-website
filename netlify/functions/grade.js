@@ -15,7 +15,7 @@ exports.handler = async function (event) {
   }
 
   try {
-    const { system, userText } = JSON.parse(event.body);
+    const { system, content } = JSON.parse(event.body);
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -28,7 +28,7 @@ exports.handler = async function (event) {
         model: "claude-sonnet-4-6",
         max_tokens: 1000,
         system: system,
-        messages: [{ role: "user", content: userText }]
+        messages: [{ role: "user", content: content }]
       })
     });
 

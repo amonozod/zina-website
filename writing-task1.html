@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Task 1 — Zina</title>
+<meta name="description" content="Practice IELTS Writing Task 1 with 15 real exam charts, tables, and diagrams under a 20-minute timer, with instant AI feedback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Zina<span>.</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="listening.html">Listening</a>
+      <a href="reading.html">Reading</a>
+      <a href="writing.html" class="active">Writing</a>
+      <a href="speaking.html">Speaking</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="mock-tests.html">Mock tests</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-cta">
+      <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero" style="padding-bottom:0; border-bottom:none;">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Zina</a> / <a href="writing.html">Writing</a> / Task 1</div>
+    <div class="kicker">Report writing · 20 minutes</div>
+    <h1 class="h-lg">Task 1 — describe the data.</h1>
+    <p class="lede">15 real past-exam charts, tables, maps and diagrams. Summarise the key features and Zina scores it like an examiner.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:32px;">
+  <div class="wrap">
+    <div class="exam-topbar">
+      <div>
+        <div class="phase-label" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Task 1 · 20 minutes</div>
+        <div class="timer" id="t1Timer">20:00</div>
+      </div>
+      <div>
+        <button class="btn btn-outline btn-sm" id="t1NewTopic">New topic</button>
+        <button class="btn btn-primary btn-sm" id="t1Start">Start exam</button>
+      </div>
+    </div>
+
+    <div class="cue-card">
+      <div class="phase-label" id="t1Category" style="font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-transform:uppercase;">Category</div>
+      <h3 id="t1Question">Press "Start exam" to get a real Task 1 question and begin the timer.</h3>
+      <div id="t1Chart" style="margin-top:18px;"></div>
+    </div>
+
+    <div class="locked-banner" id="t1Locked">Time's up! Your response has been locked and submitted automatically for scoring.</div>
+
+    <textarea class="exam-input" id="t1Input" placeholder="Your response will unlock here once the exam starts..." disabled></textarea>
+    <div class="word-count"><span id="t1Words">0</span> words (aim for 150+)</div>
+
+    <div class="exam-actions">
+      <button class="btn btn-gold" id="t1Submit" disabled>Submit for AI feedback</button>
+      <button class="btn btn-outline" id="t1Reset">Reset</button>
+    </div>
+
+    <div id="t1Loading" class="loading-row" style="display:none;"><div class="spinner"></div> Scoring your response against IELTS Writing criteria…</div>
+    <div id="t1Error"></div>
+    <div id="t1Result"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap grid-2">
+    <div>
+      <div class="kicker">4 official criteria</div>
+      <h2 class="h-lg">Know exactly where each score comes from</h2>
+      <ul style="margin-top:20px; display:grid; gap:14px;">
+        <li><b>Task Achievement</b> — whether you fully address the prompt with a clear position.</li>
+        <li><b>Coherence &amp; Cohesion</b> — whether your ideas flow logically and linking is used well.</li>
+        <li><b>Lexical Resource</b> — the range and precision of your vocabulary.</li>
+        <li><b>Grammatical Range &amp; Accuracy</b> — variety of sentence structures and grammatical correctness.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">How grading works</div>
+      <h2 class="h-lg">The AI sees the actual chart, not just your text</h2>
+      <p class="lede" style="margin-top:16px;">Your response is graded alongside the real chart above, so Task Achievement is judged against the actual data — not guessed.</p>
+      <div class="btn-row"><a href="writing-task2.html" class="btn btn-outline">Try Task 2 instead</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Zina.</div>
+        <p class="footer-note">An AI platform for Academic IELTS prep.</p>
+      </div>
+      <div>
+        <h5>Skills</h5>
+        <a href="listening.html">Listening</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="speaking.html">Speaking</a>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="mock-tests.html">Mock tests</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a href="about.html#faq">FAQ</a>
+        <a href="about.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zina. All rights reserved.</span>
+      <span>Zina is an independent prep platform and is not affiliated with IELTS, British Council, IDP, or Cambridge.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script src="assets/charts.js"></script>
+<script src="assets/exam-common.js"></script>
+<script>
+const TASK1_TOPICS = [
+  { cat: "Line + Area Chart", img: "assets/task1/t1_ireland.png", q: "The graph below shows unemployment levels in Ireland and the number of people leaving the country between 1988 and 2008. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
+  { cat: "Table + Line Graph", q: "The table and graph below show the total number of internet searches in the US and the percentage of searches using different search engines between 2004 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [
+      { kind: "table", headers: ["Total US searches", ""], rows: [["November 2004", "4.5 billion"], ["September 2010", "16 billion"]] },
+      { kind: "line", yMax: 70, xLabels: ["Nov 04","Jul 06","Jul 07","Sept 07","Apr 08","Apr 09","Sept 10"],
+        series: [
+          { label: "Google", color: "#4F8CFF", values: [35,44,54,56,58,63,65] },
+          { label: "Yahoo", color: "#34D399", values: [32,30,26,26,25,23,19] },
+          { label: "Microsoft", color: "#FBBF24", values: [16,14,12,11,10,10,10] },
+          { label: "AOL", color: "#F87171", values: [9,7,8,8,8,8,3] },
+          { label: "Ask Jeeves", color: "#94A3B8", values: [5,2,2,2,2,2,2] },
+        ]}
+    ]},
+  { cat: "Line Graph", q: "The chart below shows the average cost of a monthly contract for four different mobile (cell) phones in a European country from January to September 2002, measured in euros. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "line", yMax: 30, xLabels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],
+      series: [
+        { label: "Demo", color: "#4F8CFF", values: [15,16,17,16,20,20,25,24,22.5] },
+        { label: "Lex", color: "#F87171", values: [12,10,13,13,14,13,16,16,18] },
+        { label: "Sim TX", color: "#FBBF24", values: [5,5,6,7,6,5,10,13,25] },
+        { label: "Alpha", color: "#94A3B8", values: [9,8,9,10,11,13.5,10,9,8] },
+      ]}]},
+  { cat: "Line Graph", q: "The graph below shows the number of inquiries received by the Tourist Information Office in one city over a six-month period in 2011. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "line", yMax: 2000, xLabels: ["Jan","Feb","Mar","Apr","May","Jun"],
+      series: [
+        { label: "In person", color: "#4F8CFF", values: [450,600,800,1250,1550,1900] },
+        { label: "By letter/email", color: "#F87171", values: [750,700,700,550,350,350] },
+        { label: "By telephone", color: "#34D399", values: [900,750,1000,1000,1400,1600] },
+      ]}]},
+  { cat: "Maps", img: "assets/task1/t1_tv.png", q: "The maps below show a TV centre ten years ago and now. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
+  { cat: "Bar Chart", q: "The bar chart below shows the percentage of food bought by people in a town in different ways during the week in 2009, 2011, and 2013. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "bar", yMax: 100, groups: [
+      { label: "Mon", bars: [{label:"2009",value:65,color:"#4F8CFF"},{label:"2011",value:70,color:"#94A3B8"},{label:"2013",value:62,color:"#111827"}] },
+      { label: "Tue", bars: [{label:"2009",value:60,color:"#4F8CFF"},{label:"2011",value:75,color:"#94A3B8"},{label:"2013",value:45,color:"#111827"}] },
+      { label: "Wed", bars: [{label:"2009",value:30,color:"#4F8CFF"},{label:"2011",value:35,color:"#94A3B8"},{label:"2013",value:27,color:"#111827"}] },
+      { label: "Thu", bars: [{label:"2009",value:30,color:"#4F8CFF"},{label:"2011",value:65,color:"#94A3B8"},{label:"2013",value:35,color:"#111827"}] },
+      { label: "Fri", bars: [{label:"2009",value:75,color:"#4F8CFF"},{label:"2011",value:80,color:"#94A3B8"},{label:"2013",value:82,color:"#111827"}] },
+      { label: "Sat", bars: [{label:"2009",value:85,color:"#4F8CFF"},{label:"2011",value:90,color:"#94A3B8"},{label:"2013",value:95,color:"#111827"}] },
+      { label: "Sun", bars: [{label:"2009",value:88,color:"#4F8CFF"},{label:"2011",value:92,color:"#94A3B8"},{label:"2013",value:75,color:"#111827"}] },
+    ]}]},
+  { cat: "Pie Charts", q: "The charts below show the proportion of holidaymakers using four different types of accommodation in three different years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "pies", pies: [
+      { title: "1988", data: [{label:"Family/friends",value:52,color:"#4F8CFF"},{label:"Camping",value:26,color:"#94A3B8"},{label:"Hotels",value:15,color:"#34D399"},{label:"Rented apts",value:7,color:"#FBBF24"}] },
+      { title: "1998", data: [{label:"Family/friends",value:54,color:"#4F8CFF"},{label:"Hotels",value:22,color:"#34D399"},{label:"Camping",value:13,color:"#94A3B8"},{label:"Rented apts",value:11,color:"#FBBF24"}] },
+      { title: "2008", data: [{label:"Family/friends",value:44,color:"#4F8CFF"},{label:"Hotels",value:25,color:"#34D399"},{label:"Rented apts",value:20,color:"#FBBF24"},{label:"Camping",value:11,color:"#94A3B8"}] },
+    ]}]},
+  { cat: "Table", q: "The table below shows how much people from five employment sectors earned, at three different salary levels, in 2009. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "table", headers: ["Sector","Maximum","Minimum","Average"], rows: [
+      ["Finance","£8850","£1600","£5225"],["Transportation","£4580","£843","£2712"],
+      ["Construction","£3100","£790","£1945"],["Manufacturing","£3500","£930","£2215"],["Hospitality","£2900","£890","£1895"],
+    ]}]},
+  { cat: "Diagrams", img: "assets/task1/t1_office.png", q: "The diagrams below show a typical American office and a typical Japanese office. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
+  { cat: "Maps", img: "assets/task1/t1_college.png", q: "The maps below compare the present layout of a college with its planned future developments. Summarise the information by selecting and reporting the main features, and make comparisons where relevant." },
+  { cat: "Table", q: "The table below gives information about tax collected, as a percentage of GDP, in five countries between 1975 and 2005. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "table", headers: ["Country","1975","1985","1995","2005"], rows: [
+      ["Sweden","46%","47%","51%","70.1%"],["USA","25.1%","25.4%","27.1%","27.4%"],
+      ["Korea","15.1%","27%","26%","27.3%"],["Japan","15%","16%","23%","32.1%"],["Turkey","16.4%","15%","24%","27.4%"],
+    ]}]},
+  { cat: "Bar + Pie Charts", q: "The charts below show average levels of participation in education, and the highest level of education reached by adults, from 2000 to 2010 in Singapore. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [
+      { kind: "bar", yMax: 10, groups: [
+        { label: "2000", bars: [{label:"Male",value:7.5,color:"#4F8CFF"},{label:"Female",value:6.0,color:"#94A3B8"}] },
+        { label: "2002", bars: [{label:"Male",value:8.0,color:"#4F8CFF"},{label:"Female",value:6.1,color:"#94A3B8"}] },
+        { label: "2004", bars: [{label:"Male",value:8.3,color:"#4F8CFF"},{label:"Female",value:6.6,color:"#94A3B8"}] },
+        { label: "2006", bars: [{label:"Male",value:8.7,color:"#4F8CFF"},{label:"Female",value:7.2,color:"#94A3B8"}] },
+        { label: "2008", bars: [{label:"Male",value:9.1,color:"#4F8CFF"},{label:"Female",value:7.7,color:"#94A3B8"}] },
+        { label: "2010", bars: [{label:"Male",value:9.6,color:"#4F8CFF"},{label:"Female",value:8.2,color:"#94A3B8"}] },
+      ]},
+      { kind: "pies", pies: [
+        { title: "2000", data: [{label:"Secondary",value:27.7,color:"#4F8CFF"},{label:"College",value:26.5,color:"#94A3B8"},{label:"Diploma",value:24.0,color:"#34D399"},{label:"University",value:21.8,color:"#FBBF24"}] },
+        { title: "2010", data: [{label:"Secondary",value:8.0,color:"#4F8CFF"},{label:"College",value:16.3,color:"#94A3B8"},{label:"Diploma",value:31.7,color:"#34D399"},{label:"University",value:44.5,color:"#FBBF24"}] },
+      ]}
+    ]},
+  { cat: "Line Graph", q: "The graph below shows the percentage of tourists who used different types of transport within a particular country between 1989 and 2009. Each tourist may have used more than one type of transport. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "line", yMax: 70, xLabels: ["1989","1994","1999","2004","2009"],
+      series: [
+        { label: "Car", color: "#4F8CFF", values: [49,57,63,56,52] },
+        { label: "Rail", color: "#F87171", values: [35,38,45,53,58] },
+        { label: "Air", color: "#94A3B8", values: [40,31,28,23,20] },
+        { label: "Coach", color: "#34D399", values: [9,13,15,24,22] },
+        { label: "Ferry", color: "#FBBF24", values: [4,7,8,12,8] },
+      ]}]},
+  { cat: "Line Graph", q: "The line graph below shows the number of births and deaths in a European country from 1950 to the present day, with projections to 2050. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [{ kind: "line", yMax: 1000000, xLabels: ["1950","1970","1990","2010","2030","2050"],
+      series: [
+        { label: "Birth rate", color: "#4F8CFF", values: [750000,1000000,570000,690000,690000,700000] },
+        { label: "Death rate", color: "#F87171", values: [690000,730000,710000,680000,680000,830000] },
+      ]}]},
+  { cat: "Table + Bar Chart", q: "The table and chart below show a breakdown of the total expenditure, and the average amount spent per week, by students studying abroad in four countries. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    visuals: [
+      { kind: "table", headers: ["Country","Total weekly (US$)"], rows: [["A","875"],["B","735"],["C","540"],["D","435"]] },
+      { kind: "bar", yMax: 500, groups: [
+        { label: "A", bars: [{label:"Accommodation",value:220,color:"#4F8CFF"},{label:"Tuition",value:358,color:"#94A3B8"},{label:"Living cost",value:430,color:"#111827"}] },
+        { label: "B", bars: [{label:"Accommodation",value:280,color:"#4F8CFF"},{label:"Tuition",value:320,color:"#94A3B8"},{label:"Living cost",value:350,color:"#111827"}] },
+        { label: "C", bars: [{label:"Accommodation",value:240,color:"#4F8CFF"},{label:"Tuition",value:250,color:"#94A3B8"},{label:"Living cost",value:275,color:"#111827"}] },
+        { label: "D", bars: [{label:"Accommodation",value:200,color:"#4F8CFF"},{label:"Tuition",value:235,color:"#94A3B8"},{label:"Living cost",value:225,color:"#111827"}] },
+      ]}
+    ]},
+];
+
+function renderTask1Visual(topic, container) {
+  if (topic.img) {
+    container.innerHTML = `<img src="${topic.img}" alt="${topic.cat}" style="max-width:100%; border-radius:var(--radius-sm); border:1px solid var(--rule);">`;
+    return;
+  }
+  container.innerHTML = topic.visuals.map(v => {
+    if (v.kind === "line") return lineChartSVG(v.series, v.xLabels, v.yMax);
+    if (v.kind === "bar") return barChartSVG(v.groups, v.yMax);
+    if (v.kind === "pies") return multiPieHTML(v.pies);
+    if (v.kind === "table") return dataTableHTML(v.headers, v.rows);
+    return "";
+  }).join('<div style="height:18px;"></div>');
+}
+
+let current = null;
+let seconds = 20 * 60;
+let interval = null;
+
+const timerEl = document.getElementById("t1Timer");
+const input = document.getElementById("t1Input");
+const words = document.getElementById("t1Words");
+const submit = document.getElementById("t1Submit");
+const start = document.getElementById("t1Start");
+const locked = document.getElementById("t1Locked");
+
+function pickTopic() {
+  current = TASK1_TOPICS[Math.floor(Math.random() * TASK1_TOPICS.length)];
+  document.getElementById("t1Category").textContent = current.cat;
+  document.getElementById("t1Question").textContent = current.q;
+  renderTask1Visual(current, document.getElementById("t1Chart"));
+}
+pickTopic();
+document.getElementById("t1NewTopic").addEventListener("click", pickTopic);
+
+input.addEventListener("input", () => {
+  words.textContent = input.value.trim().split(/\s+/).filter(Boolean).length;
+});
+
+start.addEventListener("click", () => {
+  input.disabled = false;
+  submit.disabled = false;
+  start.disabled = true;
+  input.focus();
+  interval = setInterval(() => {
+    seconds--;
+    timerEl.textContent = formatTime(seconds);
+    if (seconds <= 60) timerEl.classList.add("warn");
+    if (seconds <= 0) { clearInterval(interval); lock(true); }
+  }, 1000);
+});
+
+function lock(auto) {
+  input.disabled = true;
+  submit.disabled = true;
+  if (auto) { locked.classList.add("show"); submitResponse(); }
+}
+
+document.getElementById("t1Reset").addEventListener("click", () => {
+  clearInterval(interval);
+  seconds = 20 * 60;
+  timerEl.textContent = "20:00";
+  timerEl.classList.remove("warn");
+  input.value = ""; input.disabled = true;
+  submit.disabled = true; start.disabled = false;
+  locked.classList.remove("show");
+  words.textContent = "0";
+  document.getElementById("t1Result").innerHTML = "";
+  document.getElementById("t1Error").innerHTML = "";
+  pickTopic();
+});
+
+submit.addEventListener("click", () => { clearInterval(interval); lock(false); submitResponse(); });
+
+async function submitResponse() {
+  const essay = input.value.trim();
+  const resultEl = document.getElementById("t1Result");
+  const errorEl = document.getElementById("t1Error");
+  const loadingEl = document.getElementById("t1Loading");
+  errorEl.innerHTML = ""; resultEl.innerHTML = "";
+  if (essay.split(/\s+/).filter(Boolean).length < 20) {
+    errorEl.innerHTML = '<div class="error-box">Write a bit more before submitting.</div>';
+    return;
+  }
+  loadingEl.style.display = "flex";
+  try {
+    const system = `You are an official IELTS Writing examiner. Score this Task 1 response strictly using the real IELTS Writing band descriptors for: Task Achievement, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy. Be realistic and strict, do not inflate scores. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"overallBand":number,"criteria":[{"name":"Task Achievement","band":number,"comment":"max 30 words"},{"name":"Coherence & Cohesion","band":number,"comment":"max 30 words"},{"name":"Lexical Resource","band":number,"comment":"max 30 words"},{"name":"Grammatical Range & Accuracy","band":number,"comment":"max 30 words"}],"strengths":["max 12 words","max 12 words"],"improvements":["max 12 words","max 12 words","max 12 words"]}`;
+    const questionText = `Question: ${current.q}\n\nResponse:\n${essay}`;
+    let content;
+    if (current.img) {
+      const base64 = await imageUrlToBase64(current.img);
+      content = [
+        { type: "image", source: { type: "base64", media_type: "image/png", data: base64 } },
+        { type: "text", text: questionText + "\n\n(The chart/diagram this response describes is the image above — judge Task Achievement against the real data shown in it.)" }
+      ];
+    } else {
+      content = questionText;
+    }
+    const json = await callClaude(system, content);
+    renderExamResult(resultEl, json);
+  } catch (e) {
+    errorEl.innerHTML = '<div class="error-box">Could not get a score right now (' + e.message + ').</div>';
+  } finally {
+    loadingEl.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>
