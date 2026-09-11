@@ -13,6 +13,9 @@ export default {
     if (url.pathname === "/consume-credit" && request.method === "POST") {
       return handleConsumeCredit(request, env);
     }
+    if (url.pathname === "/parse-topic" && request.method === "POST") {
+      return handleParseTopic(request, env);
+    }
 
     // Everything else: serve the static site (html/css/js/images).
     return env.ASSETS.fetch(request);
@@ -119,6 +122,51 @@ async function handleConsumeCredit(request, env) {
     const access = await checkAccess(request, env);
     if (access.fail) return access.fail;
     return json({ allowed: true }, 200);
+  } catch (err) {
+    return json({ error: { message: err.message } }, 500);
+  }
+}
+
+async function handleParseTopic(request, env) {
+  const apiKey = env.ANTHROPIC_API_KEY;
+  const supabaseUrl = env.SUPABASE_URL;
+  const supabaseSecretKey = env.SUPABASE_SECRET_KEY;
+  const adminEmail = env.ADMIN_EMAIL || "diyorilhomoff@gmail.com";
+
+  if (!apiKey || !supabaseUrl || !supabaseSecretKey) {
+    return json({ error: { message: "Server is missing configuration." } }, 500);
+  }
+
+  try {
+    const { accessToken, rawText, kind } = await request.json();
+    if (!accessToken) return json({ error: { message: "SIGN_IN_REQUIRED" } }, 401);
+
+    const userRes = await fetch(supabaseUrl + "/auth/v1/user", {
+      headers: { "Authorization": "Bearer " + accessToken, "apikey": supabaseSecretKey }
+    });
+    if (!userRes.ok) return json({ error: { message: "SESSION_EXPIRED" } }, 401);
+    const user = await userRes.json();
+    if (user.email !== adminEmail) return json({ error: { message: "Admin only." } }, 403);
+
+    const system = kind === "speaking"
+      ? `Extract IELTS Speaking material from the raw pasted text (which may include OCR noise, dates, watermarks like @cdireport, emoji, or Telegram UI text — ignore all of that). Identify the part (part1, part2, or part3), a short category label, the question or cue-card title, and bullet points if it's a Part 2 cue card. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"items":[{"part":"part1|part2|part3","category":"short label","question":"exact question text","bullets":["bullet1","bullet2"]}]}. If there are multiple questions in the text, return multiple items. bullets should be an empty array if not applicable.`
+      : `Extract IELTS Writing material from the raw pasted text (which may include OCR noise, dates, watermarks like @cdireport, emoji, or Telegram UI text — ignore all of that). Identify whether each question is Task 1 (data description) or Task 2 (essay), a short category label (e.g. "Line Graph", "Education"), and the exact question text. Respond with ONLY valid JSON, no markdown fences, no preamble, in exactly this shape: {"items":[{"task":"task1|task2","category":"short label","question":"exact question text"}]}. If there are multiple questions in the text (e.g. both Task 1 and Task 2), return multiple items.`;
+
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01" },
+      body: JSON.stringify({
+        model: "claude-sonnet-5",
+        max_tokens: 1000,
+        system: system,
+        messages: [{ role: "user", content: rawText }]
+      })
+    });
+    const data = await response.json();
+    if (!response.ok) return json({ error: data }, response.status);
+    const text = (data.content || []).map(b => b.text || "").join("\n");
+    const clean = text.replace(/```json|```/g, "").trim();
+    return json(JSON.parse(clean), 200);
   } catch (err) {
     return json({ error: { message: err.message } }, 500);
   }
