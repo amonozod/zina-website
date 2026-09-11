@@ -7,7 +7,7 @@ function formatTime(s) {
 
 async function callClaude(system, content) {
   const accessToken = await requireAccessToken();
-  const response = await fetch("/.netlify/functions/grade", {
+  const response = await fetch("/grade", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ system, content, accessToken })

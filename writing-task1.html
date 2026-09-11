@@ -280,6 +280,14 @@ function pickTopic() {
   document.getElementById("t1Question").textContent = current.q;
   renderTask1Visual(current, document.getElementById("t1Chart"));
 }
+async function loadCustomTask1Topics() {
+  try {
+    const { data } = await supabaseClient.from("writing_topics").select("*").eq("task", "task1");
+    (data || []).forEach(t => TASK1_TOPICS.push({ cat: t.category, q: t.question, img: t.image_url || undefined }));
+  } catch (e) { /* ignore if not configured yet */ }
+}
+loadCustomTask1Topics();
+
 pickTopic();
 document.getElementById("t1NewTopic").addEventListener("click", pickTopic);
 

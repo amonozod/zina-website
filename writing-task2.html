@@ -189,6 +189,14 @@ function pickTopic() {
   categoryEl.textContent = current.cat;
   questionEl.textContent = current.q;
 }
+async function loadCustomTask2Topics() {
+  try {
+    const { data } = await supabaseClient.from("writing_topics").select("*").eq("task", "task2");
+    (data || []).forEach(t => TASK2_TOPICS.push({ cat: t.category, q: t.question }));
+  } catch (e) { /* ignore if not configured yet */ }
+}
+loadCustomTask2Topics();
+
 pickTopic();
 document.getElementById("t2NewTopic").addEventListener("click", pickTopic);
 

@@ -405,6 +405,18 @@ setupSpeakingPart({
   resultId: "p3Result", errorId: "p3Error", loadingId: "p3Loading", micId: "p3Mic", micHintId: "p3MicHint"
 });
 
+async function loadCustomSpeakingTopics() {
+  try {
+    const { data } = await supabaseClient.from("speaking_topics").select("*");
+    (data || []).forEach(t => {
+      if (t.part === "part1") PART1_TOPICS.push({ cat: t.category, q: t.question });
+      if (t.part === "part2") PART2_TOPICS.push({ cat: t.category, title: t.question, bullets: t.bullets || [] });
+      if (t.part === "part3") PART3_TOPICS.push({ cat: t.category, q: t.question });
+    });
+  } catch (e) { /* ignore if not configured yet */ }
+}
+loadCustomSpeakingTopics();
+
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));

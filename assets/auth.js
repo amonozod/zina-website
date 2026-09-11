@@ -9,10 +9,14 @@ async function getSession() {
   return data.session;
 }
 
- async function signInWithEmail(email) 
- { const cleanUrl = window.location.origin + window.location.pathname; 
-  const { error } = await supabaseClient.auth.signInWithOtp({ email, options: { emailRedirectTo: cleanUrl } });
-  if (error) throw error; }
+async function signInWithEmail(email) {
+  const cleanUrl = window.location.origin + window.location.pathname;
+  const { error } = await supabaseClient.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: cleanUrl }
+  });
+  if (error) throw error;
+}
 
 async function signOut() {
   await supabaseClient.auth.signOut();

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Zina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .admin-form{ display:grid; gap:14px; max-width:640px; margin-bottom:40px; }
+  .admin-form label{ font-size:0.85rem; color:var(--muted); font-family:var(--mono); }
+  .admin-form select, .admin-form input, .admin-form textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--rule); border-radius:var(--radius-sm);
+    background:var(--paper-dim); color:var(--ink); font-family:var(--sans); font-size:0.95rem;
+  }
+  .admin-form textarea{ min-height:90px; resize:vertical; }
+  .admin-list-item{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:14px;
+    padding:16px 0; border-bottom:1px solid var(--rule);
+  }
+  .admin-list-item .tag{ margin:0 8px 0 0; }
+  .admin-locked{ text-align:center; padding:120px 20px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Zina<span>.</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="listening.html">Listening</a>
+      <a href="reading.html">Reading</a>
+      <a href="writing.html">Writing</a>
+      <a href="speaking.html">Speaking</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="mock-tests.html">Mock tests</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-cta">
+      <button type="button" class="btn btn-outline btn-sm" id="authBtn">Sign in</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" aria-label="Close">&times;</button>
+    <div class="kicker">Sign in</div>
+    <h3 class="h-md">Enter your email to continue</h3>
+    <p class="lede" style="margin-top:8px; font-size:0.9rem;">We will send a magic link, no password needed.</p>
+    <input type="email" id="authEmailInput" class="auth-input" placeholder="you@example.com">
+    <button type="button" class="btn btn-gold" id="authSubmit" style="width:100%; justify-content:center;">Send magic link</button>
+    <div id="authSentMsg" style="display:none; margin-top:14px; padding:12px; background:var(--green-tint); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--ink);">Check your email for the sign-in link!</div>
+  </div>
+</div>
+
+<div class="wrap" style="padding:56px 28px;">
+  <div id="lockedView" class="admin-locked" style="display:none;">
+    <h2 class="h-lg">Admin access only</h2>
+    <p class="lede" style="margin:14px auto;">Sign in with the owner account to manage materials.</p>
+  </div>
+
+  <div id="adminView" style="display:none;">
+    <div class="kicker">Admin</div>
+    <h1 class="h-lg">Manage practice materials</h1>
+    <p class="lede" style="margin-top:12px; margin-bottom:40px;">Add new Writing or Speaking topics. Changes appear on the site immediately for everyone.</p>
+
+    <h2 class="h-md" style="margin-bottom:18px;">Add a Writing topic</h2>
+    <div class="admin-form">
+      <div><label>Task</label><select id="wTask"><option value="task1">Task 1</option><option value="task2">Task 2</option></select></div>
+      <div><label>Category (e.g. "Line Graph", "Education")</label><input id="wCategory" placeholder="Category"></div>
+      <div><label>Question</label><textarea id="wQuestion" placeholder="Full question text..."></textarea></div>
+      <div><label>Image URL (optional, for Task 1 charts)</label><input id="wImageUrl" placeholder="https://..."></div>
+      <button type="button" class="btn btn-gold" id="wAddBtn">Add Writing topic</button>
+    </div>
+    <div id="wList"></div>
+
+    <h2 class="h-md" style="margin:48px 0 18px;">Add a Speaking topic</h2>
+    <div class="admin-form">
+      <div><label>Part</label><select id="sPart"><option value="part1">Part 1</option><option value="part2">Part 2</option><option value="part3">Part 3</option></select></div>
+      <div><label>Category</label><input id="sCategory" placeholder="Category"></div>
+      <div><label>Question / cue card title</label><textarea id="sQuestion" placeholder="Full question text..."></textarea></div>
+      <div><label>Bullets (Part 2 only, one per line, optional)</label><textarea id="sBullets" placeholder="Where it is&#10;What it used to be like&#10;..."></textarea></div>
+      <button type="button" class="btn btn-gold" id="sAddBtn">Add Speaking topic</button>
+    </div>
+    <div id="sList"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+<script>
+const ADMIN_EMAIL = "diyorilhomoff@gmail.com";
+
+async function checkAdminAccess() {
+  const session = await getSession();
+  const lockedView = document.getElementById("lockedView");
+  const adminView = document.getElementById("adminView");
+  if (session && session.user.email === ADMIN_EMAIL) {
+    lockedView.style.display = "none";
+    adminView.style.display = "block";
+    loadWritingTopics();
+    loadSpeakingTopics();
+  } else {
+    lockedView.style.display = "block";
+    adminView.style.display = "none";
+  }
+}
+
+async function loadWritingTopics() {
+  const { data } = await supabaseClient.from("writing_topics").select("*").order("created_at", { ascending: false });
+  const list = document.getElementById("wList");
+  list.innerHTML = (data || []).map(t => `
+    <div class="admin-list-item">
+      <div><span class="tag">${t.task}</span><span class="tag">${t.category}</span><div style="margin-top:6px; font-size:0.9rem;">${t.question}</div></div>
+      <button type="button" class="btn btn-outline btn-sm" onclick="deleteWritingTopic('${t.id}')">Delete</button>
+    </div>`).join("") || '<p class="lede">No custom topics added yet.</p>';
+}
+
+async function loadSpeakingTopics() {
+  const { data } = await supabaseClient.from("speaking_topics").select("*").order("created_at", { ascending: false });
+  const list = document.getElementById("sList");
+  list.innerHTML = (data || []).map(t => `
+    <div class="admin-list-item">
+      <div><span class="tag">${t.part}</span><span class="tag">${t.category}</span><div style="margin-top:6px; font-size:0.9rem;">${t.question}</div></div>
+      <button type="button" class="btn btn-outline btn-sm" onclick="deleteSpeakingTopic('${t.id}')">Delete</button>
+    </div>`).join("") || '<p class="lede">No custom topics added yet.</p>';
+}
+
+async function deleteWritingTopic(id) {
+  await supabaseClient.from("writing_topics").delete().eq("id", id);
+  loadWritingTopics();
+}
+async function deleteSpeakingTopic(id) {
+  await supabaseClient.from("speaking_topics").delete().eq("id", id);
+  loadSpeakingTopics();
+}
+
+document.getElementById("wAddBtn").addEventListener("click", async () => {
+  const task = document.getElementById("wTask").value;
+  const category = document.getElementById("wCategory").value.trim();
+  const question = document.getElementById("wQuestion").value.trim();
+  const image_url = document.getElementById("wImageUrl").value.trim() || null;
+  if (!category || !question) { alert("Fill in category and question."); return; }
+  const { error } = await supabaseClient.from("writing_topics").insert({ task, category, question, image_url });
+  if (error) { alert("Error: " + error.message); return; }
+  document.getElementById("wCategory").value = "";
+  document.getElementById("wQuestion").value = "";
+  document.getElementById("wImageUrl").value = "";
+  loadWritingTopics();
+});
+
+document.getElementById("sAddBtn").addEventListener("click", async () => {
+  const part = document.getElementById("sPart").value;
+  const category = document.getElementById("sCategory").value.trim();
+  const question = document.getElementById("sQuestion").value.trim();
+  const bulletsRaw = document.getElementById("sBullets").value.trim();
+  const bullets = bulletsRaw ? bulletsRaw.split("\n").map(b => b.trim()).filter(Boolean) : null;
+  if (!category || !question) { alert("Fill in category and question."); return; }
+  const { error } = await supabaseClient.from("speaking_topics").insert({ part, category, question, bullets });
+  if (error) { alert("Error: " + error.message); return; }
+  document.getElementById("sCategory").value = "";
+  document.getElementById("sQuestion").value = "";
+  document.getElementById("sBullets").value = "";
+  loadSpeakingTopics();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkAdminAccess();
+  supabaseClient.auth.onAuthStateChange(checkAdminAccess);
+});
+</script>
+</body>
+</html>

@@ -168,7 +168,7 @@ document.querySelectorAll(".gated-link").forEach(function (link) {
     const target = link.getAttribute("href");
     try {
       const accessToken = await requireAccessToken();
-      const res = await fetch("/.netlify/functions/consume-credit", {
+      const res = await fetch("/consume-credit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ accessToken })
