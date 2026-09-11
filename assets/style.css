@@ -381,6 +381,11 @@ textarea.exam-input:disabled{ background:var(--paper-dim); color:var(--muted); }
 .pay-detail-row span{ color:var(--muted); }
 .pay-detail-row b{ font-family:var(--mono); font-size:0.95rem; }
 
+.auth-input{
+  width:100%; padding:12px 14px; border:1px solid var(--rule); border-radius:var(--radius-sm);
+  background:var(--paper-dim); color:var(--ink); font-family:var(--sans); font-size:0.95rem; margin:14px 0;
+}
+
 /* ---------- Test-set grid (Test 1 / Test 2 ... each with 4 skills) ---------- */
 .test-set-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; }
 .test-set-card{ background:var(--white); border:1px solid var(--rule); border-radius:var(--radius-md); overflow:hidden; }

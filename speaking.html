@@ -27,10 +27,23 @@
     </nav>
     <div class="header-cta">
       <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button type="button" class="btn btn-outline btn-sm" id="authBtn">Sign in</button>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
     </div>
   </div>
 </header>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" aria-label="Close">&times;</button>
+    <div class="kicker">Sign in</div>
+    <h3 class="h-md">Enter your email to continue</h3>
+    <p class="lede" style="margin-top:8px; font-size:0.9rem;">We will send a magic link, no password needed. New accounts get 2 free AI checks.</p>
+    <input type="email" id="authEmailInput" class="auth-input" placeholder="you@example.com">
+    <button type="button" class="btn btn-gold" id="authSubmit" style="width:100%; justify-content:center;">Send magic link</button>
+    <div id="authSentMsg" style="display:none; margin-top:14px; padding:12px; background:var(--green-tint); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--ink);">Check your email for the sign-in link!</div>
+  </div>
+</div>
 
 <section class="page-hero">
   <div class="wrap">
@@ -216,6 +229,8 @@
 </footer>
 
 <script src="assets/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
 <script src="assets/exam-common.js"></script>
 <script>
 const PART1_TOPICS = [
@@ -361,7 +376,7 @@ function setupSpeakingPart(config) {
       const json = await callClaude(system, userText);
       renderExamResult(resultEl, json);
     } catch (e) {
-      errorEl.innerHTML = '<div class="error-box">Could not get a score right now (' + e.message + ').</div>';
+      errorEl.innerHTML = friendlyErrorHTML(e.message);
     } finally {
       loadingEl.style.display = "none";
     }

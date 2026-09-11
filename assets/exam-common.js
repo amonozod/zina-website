@@ -6,13 +6,17 @@ function formatTime(s) {
 }
 
 async function callClaude(system, content) {
+  const accessToken = await requireAccessToken();
   const response = await fetch("/.netlify/functions/grade", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ system, content })
+    body: JSON.stringify({ system, content, accessToken })
   });
-  if (!response.ok) throw new Error("API request failed (" + response.status + ")");
   const data = await response.json();
+  if (!response.ok) {
+    const msg = (data && data.error && data.error.message) || "Unknown error";
+    throw new Error(msg);
+  }
   const text = (data.content || []).map(b => b.text || "").join("\n");
   const clean = text.replace(/```json|```/g, "").trim();
   return JSON.parse(clean);
@@ -56,6 +60,19 @@ function renderExamResult(container, json) {
         </div>
       </div>
     </div>`;
+}
+
+function friendlyErrorHTML(message) {
+  if (message === "SIGN_IN_REQUIRED") {
+    return '<div class="error-box">Please sign in above to use AI feedback.</div>';
+  }
+  if (message === "SESSION_EXPIRED") {
+    return '<div class="error-box">Your session expired. Please sign in again.</div>';
+  }
+  if (message === "NO_CREDITS") {
+    return '<div class="error-box">You have used your 2 free AI checks. <a href="pricing.html" style="color:inherit; text-decoration:underline;">Upgrade to Pro</a> for unlimited access.</div>';
+  }
+  return '<div class="error-box">Could not get a score right now (' + message + ').</div>';
 }
 
 function setupSpeechRecognition(onResult) {
