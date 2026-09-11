@@ -10,9 +10,10 @@ async function getSession() {
 }
 
 async function signInWithEmail(email) {
+  const cleanUrl = window.location.origin + window.location.pathname;
   const { error } = await supabaseClient.auth.signInWithOtp({
     email,
-    options: { emailRedirectTo: window.location.href }
+    options: { emailRedirectTo: cleanUrl }
   });
   if (error) throw error;
 }
