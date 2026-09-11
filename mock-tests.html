@@ -27,10 +27,23 @@
     </nav>
     <div class="header-cta">
       <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button type="button" class="btn btn-outline btn-sm" id="authBtn">Sign in</button>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
     </div>
   </div>
 </header>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" aria-label="Close">&times;</button>
+    <div class="kicker">Sign in</div>
+    <h3 class="h-md">Enter your email to continue</h3>
+    <p class="lede" style="margin-top:8px; font-size:0.9rem;">We will send a magic link, no password needed. New accounts get 2 free AI checks.</p>
+    <input type="email" id="authEmailInput" class="auth-input" placeholder="you@example.com">
+    <button type="button" class="btn btn-gold" id="authSubmit" style="width:100%; justify-content:center;">Send magic link</button>
+    <div id="authSentMsg" style="display:none; margin-top:14px; padding:12px; background:var(--green-tint); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--ink);">Check your email for the sign-in link!</div>
+  </div>
+</div>
 
 <section class="page-hero">
   <div class="wrap">
@@ -57,8 +70,8 @@
     <div class="test-set-grid">
       <div class="test-set-card">
         <h3>Test 1</h3>
-        <a href="full-mock-test-1.html" class="test-set-row">Listening <span class="arrow">→</span></a>
-        <a href="reading-test-1.html" class="test-set-row">Reading <span class="arrow">→</span></a>
+        <a href="full-mock-test-1.html" class="test-set-row gated-link">Listening <span class="arrow">→</span></a>
+        <a href="reading-test-1.html" class="test-set-row gated-link">Reading <span class="arrow">→</span></a>
         <a href="writing.html" class="test-set-row">Writing <span class="arrow">→</span></a>
         <a href="speaking.html" class="test-set-row">Speaking <span class="arrow">→</span></a>
       </div>
@@ -147,6 +160,37 @@
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/exam-common.js"></script>
+<script>
+document.querySelectorAll(".gated-link").forEach(function (link) {
+  link.addEventListener("click", async function (e) {
+    e.preventDefault();
+    const target = link.getAttribute("href");
+    try {
+      const accessToken = await requireAccessToken();
+      const res = await fetch("/.netlify/functions/consume-credit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accessToken })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        if (data.error && data.error.message === "NO_CREDITS") {
+          alert("You have used your 2 free checks. Redirecting to Pricing to upgrade.");
+          window.location.href = "pricing.html";
+        } else {
+          alert("Could not verify access: " + (data.error && data.error.message));
+        }
+        return;
+      }
+      window.location.href = target;
+    } catch (err) {
+      if (err.message !== "SIGN_IN_REQUIRED") alert("Error: " + err.message);
+    }
+  });
+});
+</script>
 </body>
 </html>

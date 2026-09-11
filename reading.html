@@ -27,10 +27,23 @@
     </nav>
     <div class="header-cta">
       <a href="pricing.html" class="btn btn-primary btn-sm">Start free</a>
+      <button type="button" class="btn btn-outline btn-sm" id="authBtn">Sign in</button>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
     </div>
   </div>
 </header>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" aria-label="Close">&times;</button>
+    <div class="kicker">Sign in</div>
+    <h3 class="h-md">Enter your email to continue</h3>
+    <p class="lede" style="margin-top:8px; font-size:0.9rem;">We will send a magic link, no password needed. New accounts get 2 free AI checks.</p>
+    <input type="email" id="authEmailInput" class="auth-input" placeholder="you@example.com">
+    <button type="button" class="btn btn-gold" id="authSubmit" style="width:100%; justify-content:center;">Send magic link</button>
+    <div id="authSentMsg" style="display:none; margin-top:14px; padding:12px; background:var(--green-tint); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--ink);">Check your email for the sign-in link!</div>
+  </div>
+</div>
 
 <section class="page-hero">
   <div class="wrap">
@@ -39,7 +52,7 @@
     <h1 class="h-lg">Reading — 3 passages in 60 minutes, and time never feels like enough.</h1>
     <p class="lede">The problem is rarely the language — it's strategy. Zina shows you exactly how long you spent on each passage and where you slowed down.</p>
     <div class="btn-row">
-      <a href="reading-test-1.html" class="btn btn-gold">Start a Reading test</a>
+      <a href="reading-test-1.html" class="btn btn-gold gated-link">Start a Reading test</a>
       <a href="#format" class="btn btn-outline">See the format</a>
     </div>
   </div>
@@ -68,7 +81,7 @@
       <div class="kicker">How it works</div>
       <h2 class="h-lg">Speed and accuracy are measured separately</h2>
       <p class="lede" style="margin-top:16px;">Many learners read carefully and answer correctly but run out of time. Zina times each passage and tells you exactly where to speed up.</p>
-      <div class="btn-row"><a href="reading-test-1.html" class="btn btn-primary">Try a sample</a></div>
+      <div class="btn-row"><a href="reading-test-1.html" class="btn btn-primary gated-link">Try a sample</a></div>
     </div>
     <div class="mockup">
       <div class="mockup-bar"><span></span><span></span><span></span></div>
@@ -108,7 +121,7 @@
       <h2 class="h-lg">Find out your reading speed</h2>
       <p class="lede">Take a free mock test to see which passage type slows you down most.</p>
     </div>
-    <a href="reading-test-1.html" class="btn btn-gold">Start free</a>
+    <a href="reading-test-1.html" class="btn btn-gold gated-link">Start free</a>
   </div>
 </section>
 
@@ -145,6 +158,37 @@
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/exam-common.js"></script>
+<script>
+document.querySelectorAll(".gated-link").forEach(function (link) {
+  link.addEventListener("click", async function (e) {
+    e.preventDefault();
+    const target = link.getAttribute("href");
+    try {
+      const accessToken = await requireAccessToken();
+      const res = await fetch("/.netlify/functions/consume-credit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accessToken })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        if (data.error && data.error.message === "NO_CREDITS") {
+          alert("You have used your 2 free checks. Redirecting to Pricing to upgrade.");
+          window.location.href = "pricing.html";
+        } else {
+          alert("Could not verify access: " + (data.error && data.error.message));
+        }
+        return;
+      }
+      window.location.href = target;
+    } catch (err) {
+      if (err.message !== "SIGN_IN_REQUIRED") alert("Error: " + err.message);
+    }
+  });
+});
+</script>
 </body>
 </html>
